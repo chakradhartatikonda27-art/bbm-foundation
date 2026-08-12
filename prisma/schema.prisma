@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String @id @default(uuid())
+  email        String @unique
+  passwordHash String
+  role         String // SUPER_ADMIN, CONTENT_ADMIN, PROGRAM_MANAGER, FINANCE_ADMIN, COMM_MANAGER
+  createdAt    DateTime @default(now())
+}
+
+model Program {
+  id          String @id @default(uuid())
+  title       String
+  category    String // EDUCATION, SKILLS, WOMEN_FAMILY, YOUTH, HEALTH, COMMUNITY, HUMANITARIAN, OPPORTUNITY
+  description String
+  imageUrl    String?
+  status      String   @default("ACTIVE") // ACTIVE, DRAFT, ARCHIVED
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Story {
+  id           String @id @default(uuid())
+  title        String
+  author       String
+  challenge    String
+  intervention String
+  outcome      String
+  quote        String?
+  imageUrl     String?
+  publishedAt  DateTime @default(now())
+}
+
+model Metric {
+  id          String @id @default(uuid())
+  label       String
+  value       String
+  description String?
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model TeamMember {
+  id        String @id @default(uuid())
+  name      String
+  role      String
+  bio       String?
+  imageUrl  String?
+  order     Int    @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Document {
+  id            String @id @default(uuid())
+  title         String
+  category      String // FINANCIAL, ANNUAL, LEGAL, POLICY
+  fileUrl       String?
+  publishedYear Int
+  createdAt     DateTime @default(now())
+}
+
+model Donation {
+  id         String @id @default(uuid())
+  donorName  String
+  donorEmail String
+  donorPhone String?
+  amount     Float
+  purpose    String
+  status     String // INITIATED, SUCCESS, FAILED
+  paymentId  String?
+  createdAt  DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  purpose   String // DONATION, VOLUNTEER, PARTNERSHIP, OTHER
+  message   String
+  createdAt DateTime @default(now())
+}
