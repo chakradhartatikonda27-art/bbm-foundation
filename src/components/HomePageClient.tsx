@@ -94,7 +94,7 @@ export default function HomePageClient({ programs, stories, metrics }: HomePageC
             YOU CAN PLAY A <span className="text-emerald-400 font-extrabold underline decoration-emerald-400 decoration-wavy">VITAL</span> ROLE IN ATTAINING A WORLD WITHOUT ORPHANS
           </h1>
 
-          <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md p-6 sm:p-9 rounded-[2.5rem] shadow-2xl text-slate-800 border border-white/40 transform hover:scale-[1.01] transition-all">
+          <div className="max-w-3xl mx-auto bg-white p-6 sm:p-9 rounded-[2.5rem] shadow-2xl text-slate-800 border border-slate-100 transform hover:scale-[1.01] transition-all">
             <p className="text-base sm:text-xl font-medium text-slate-700 leading-relaxed font-sans">
               Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.
             </p>
