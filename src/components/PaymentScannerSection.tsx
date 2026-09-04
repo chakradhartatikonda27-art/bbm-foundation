@@ -18,12 +18,13 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
   const [copied, setCopied] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState<string>("2500");
 
-  const upiId = scannerData?.upiId || "bbmfoundation@upi";
+  const upiId = scannerData?.upiId || "QR919885126368-0750@unionbankofindia";
   const accountDetails = {
-    bankName: scannerData?.bankName || "State Bank of India",
+    bankName: scannerData?.bankName || "Union Bank of India",
     accountName: scannerData?.accountName || "BBM FOUNDATION",
-    accountNumber: scannerData?.accountNumber || "4289010054321",
-    ifscCode: scannerData?.ifscCode || "SBIN0004562",
+    accountNumber: scannerData?.accountNumber || "551401010050750",
+    ifscCode: scannerData?.ifscCode || "UBIN0555142",
+    branch: "Narsipatnam Branch",
     taxNote: scannerData?.taxNote || "Donations to BBM Foundation are eligible for 80G tax benefit certificate under the Income Tax Act.",
   };
 
@@ -51,7 +52,7 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
             Scan & Donate via <span className="text-emerald-400">UPI / QR Code</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
-            Support BBM Foundation's child care and family initiatives instantly. Scan using Google Pay, PhonePe, Paytm, BHIM, or any banking app.
+            Support BBM Foundation's initiatives instantly. Scan using Google Pay, PhonePe, Paytm, BHIM, or any UPI banking app.
           </p>
         </div>
 
@@ -71,7 +72,7 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
                   />
                   <div>
                     <h3 className="font-display font-black text-sm text-[#114227] leading-tight">BBM FOUNDATION</h3>
-                    <span className="text-[9px] font-bold text-slate-600 uppercase tracking-widest block">Official UPI Handle</span>
+                    <span className="text-[9px] font-bold text-slate-600 uppercase tracking-widest block">Union Bank of India Official QR</span>
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
@@ -79,82 +80,21 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
                 </div>
               </div>
 
-              {/* QR Code Container */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center relative group-hover:border-emerald-400 transition-colors">
-                <div className="relative mx-auto w-52 h-52 bg-white p-3 rounded-xl shadow-inner border border-slate-100 flex items-center justify-center">
-                  {/* Generated SVG QR Pattern Representation */}
-                  <svg className="w-full h-full text-slate-900 fill-current" viewBox="0 0 200 200">
-                    {/* Corner Position Detection Squares */}
-                    {/* Top-Left */}
-                    <rect x="10" y="10" width="50" height="50" rx="6" fill="#114227" />
-                    <rect x="20" y="20" width="30" height="30" rx="3" fill="#ffffff" />
-                    <rect x="28" y="28" width="14" height="14" rx="2" fill="#114227" />
-                    
-                    {/* Top-Right */}
-                    <rect x="140" y="10" width="50" height="50" rx="6" fill="#114227" />
-                    <rect x="150" y="20" width="30" height="30" rx="3" fill="#ffffff" />
-                    <rect x="158" y="28" width="14" height="14" rx="2" fill="#114227" />
-
-                    {/* Bottom-Left */}
-                    <rect x="10" y="140" width="50" height="50" rx="6" fill="#114227" />
-                    <rect x="20" y="150" width="30" height="30" rx="3" fill="#ffffff" />
-                    <rect x="28" y="158" width="14" height="14" rx="2" fill="#114227" />
-
-                    {/* Random Dense QR Matrix Elements */}
-                    <rect x="70" y="15" width="12" height="12" fill="#059669" />
-                    <rect x="90" y="15" width="12" height="12" fill="#114227" />
-                    <rect x="115" y="15" width="12" height="12" fill="#059669" />
-                    
-                    <rect x="70" y="35" width="12" height="12" fill="#114227" />
-                    <rect x="95" y="35" width="18" height="12" fill="#059669" />
-                    <rect x="120" y="35" width="10" height="12" fill="#114227" />
-
-                    <rect x="15" y="70" width="12" height="12" fill="#059669" />
-                    <rect x="35" y="70" width="12" height="12" fill="#114227" />
-                    <rect x="55" y="70" width="12" height="12" fill="#059669" />
-                    <rect x="75" y="70" width="20" height="12" fill="#114227" />
-                    <rect x="105" y="70" width="12" height="12" fill="#059669" />
-                    <rect x="125" y="70" width="12" height="12" fill="#114227" />
-                    <rect x="145" y="70" width="18" height="12" fill="#059669" />
-                    <rect x="170" y="70" width="12" height="12" fill="#114227" />
-
-                    <rect x="15" y="90" width="25" height="12" fill="#114227" />
-                    <rect x="45" y="90" width="12" height="12" fill="#059669" />
-                    <rect x="65" y="90" width="12" height="12" fill="#114227" />
-
-                    {/* Center Logo Overlay Icon in QR Code */}
-                    <rect x="75" y="75" width="50" height="50" rx="10" fill="#ffffff" stroke="#114227" strokeWidth="3" />
-                    <image href="/logo.png" x="80" y="80" width="40" height="40" preserveAspectRatio="xMidYMid meet" />
-
-                    <rect x="135" y="90" width="15" height="12" fill="#114227" />
-                    <rect x="155" y="90" width="25" height="12" fill="#059669" />
-
-                    <rect x="15" y="110" width="12" height="12" fill="#059669" />
-                    <rect x="35" y="110" width="20" height="12" fill="#114227" />
-                    <rect x="145" y="110" width="15" height="12" fill="#114227" />
-                    <rect x="165" y="110" width="18" height="12" fill="#059669" />
-
-                    <rect x="70" y="140" width="15" height="12" fill="#059669" />
-                    <rect x="90" y="140" width="20" height="12" fill="#114227" />
-                    <rect x="115" y="140" width="12" height="12" fill="#059669" />
-                    <rect x="135" y="140" width="15" height="12" fill="#114227" />
-                    <rect x="155" y="140" width="30" height="12" fill="#059669" />
-
-                    <rect x="70" y="160" width="25" height="12" fill="#114227" />
-                    <rect x="100" y="160" width="15" height="12" fill="#059669" />
-                    <rect x="120" y="160" width="20" height="12" fill="#114227" />
-                    <rect x="145" y="160" width="12" height="12" fill="#059669" />
-                    <rect x="165" y="160" width="20" height="12" fill="#114227" />
-
-                    <rect x="70" y="178" width="12" height="12" fill="#059669" />
-                    <rect x="90" y="178" width="30" height="12" fill="#114227" />
-                    <rect x="130" y="178" width="15" height="12" fill="#059669" />
-                    <rect x="155" y="178" width="25" height="12" fill="#114227" />
-                  </svg>
+              {/* Official Union Bank QR Code Image Container */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center relative group-hover:border-emerald-400 transition-colors">
+                <div className="relative mx-auto w-56 h-auto bg-white p-2 rounded-xl shadow-md border border-slate-100 flex items-center justify-center overflow-hidden">
+                  <img
+                    src="/union_bank_qr.png"
+                    alt="Union Bank BBM Foundation Official UPI QR Code"
+                    className="w-full h-auto object-contain rounded-lg"
+                  />
                 </div>
 
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest block mt-3">
+                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-widest block mt-3">
                   Scan to Pay ₹{selectedAmount}
+                </span>
+                <span className="text-[10px] font-mono text-emerald-800 font-bold block mt-0.5">
+                  {upiId}
                 </span>
               </div>
 
@@ -202,9 +142,9 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                   <span className="text-[10px] font-bold text-emerald-300 uppercase tracking-widest block">
-                    Direct UPI VPA ID
+                    Direct Official UPI VPA ID
                   </span>
-                  <span className="text-xl sm:text-2xl font-mono font-black text-white tracking-wider block mt-0.5">
+                  <span className="text-sm sm:text-base font-mono font-black text-white tracking-wider block mt-0.5 break-all">
                     {upiId}
                   </span>
                 </div>
@@ -212,7 +152,7 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
                 <button
                   type="button"
                   onClick={handleCopyUPI}
-                  className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold text-xs shadow-md transition-all flex items-center justify-center gap-2 flex-shrink-0"
                 >
                   {copied ? (
                     <>
@@ -261,6 +201,14 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
                   <span className="text-slate-500 block text-[10px] uppercase font-semibold">IFSC Code:</span>
                   <span className="font-mono font-bold text-emerald-400">{accountDetails.ifscCode}</span>
                 </div>
+                <div>
+                  <span className="text-slate-500 block text-[10px] uppercase font-semibold">Branch:</span>
+                  <span className="font-bold text-white">{accountDetails.branch}</span>
+                </div>
+                <div>
+                  <span className="text-slate-500 block text-[10px] uppercase font-semibold">PAN Number:</span>
+                  <span className="font-mono font-bold text-emerald-400">AAFTB3316H</span>
+                </div>
               </div>
             </div>
 
@@ -270,7 +218,7 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
               <div>
                 <span className="font-bold text-white block">80G Tax Exemption Certified</span>
                 <span className="text-[11px] text-emerald-300/80">
-                  Donations to BBM Foundation are eligible for 80G tax benefit certificate under the Income Tax Act.
+                  {accountDetails.taxNote}
                 </span>
               </div>
             </div>

@@ -25,20 +25,20 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
   );
 
   // Payment Scanner form
-  const [upiId, setUpiId] = useState(initialContent?.scanner?.upiId || "bbmfoundation@upi");
+  const [upiId, setUpiId] = useState(initialContent?.scanner?.upiId || "QR919885126368-0750@unionbankofindia");
   const [accountName, setAccountName] = useState(initialContent?.scanner?.accountName || "BBM FOUNDATION");
-  const [bankName, setBankName] = useState(initialContent?.scanner?.bankName || "State Bank of India");
-  const [accountNumber, setAccountNumber] = useState(initialContent?.scanner?.accountNumber || "4289010054321");
-  const [ifscCode, setIfscCode] = useState(initialContent?.scanner?.ifscCode || "SBIN0004562");
+  const [bankName, setBankName] = useState(initialContent?.scanner?.bankName || "Union Bank of India");
+  const [accountNumber, setAccountNumber] = useState(initialContent?.scanner?.accountNumber || "551401010050750");
+  const [ifscCode, setIfscCode] = useState(initialContent?.scanner?.ifscCode || "UBIN0555142");
   const [taxNote, setTaxNote] = useState(
     initialContent?.scanner?.taxNote || "Donations to BBM Foundation are eligible for 80G tax benefit certificate under the Income Tax Act."
   );
 
   // Contact Info form
-  const [contactEmail, setContactEmail] = useState(initialContent?.contact?.email || "info@bbmfoundation.org");
-  const [contactPhone, setContactPhone] = useState(initialContent?.contact?.phone || "+91 98765 43210");
+  const [contactEmail, setContactEmail] = useState(initialContent?.contact?.email || "bbmindiafoundation@gmail.com");
+  const [contactPhone, setContactPhone] = useState(initialContent?.contact?.phone || "+91 8500863000 / +91 9885126368");
   const [contactAddress, setContactAddress] = useState(
-    initialContent?.contact?.address || "BBM Foundation Secretariat, Jubilee Hills, Hyderabad, Telangana 500033"
+    initialContent?.contact?.address || "Reg. Off.: # 3-150, Main Street, Bypureddy Palem, Narsipatnam, Anakapalli Dist., A.P. - 531116 | Corp. Off.: # 4-6-17/1, S1, Kamal's Castle, Savarkar Nagar, Nacharam, Hyd - 500076, Telangana"
   );
 
   const handleSave = async (key: string, payload: any) => {

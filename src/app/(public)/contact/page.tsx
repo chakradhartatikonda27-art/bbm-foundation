@@ -64,14 +64,28 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-primary text-white p-8 rounded-2xl shadow-md space-y-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-slate-800 rounded-full -mr-12 -mt-12 -z-10"></div>
-              <h2 className="text-xl font-bold font-display text-white">Foundation Headquarters</h2>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 block">Leadership & Management</span>
+                <h2 className="text-xl font-bold font-display text-white">Dr. B. Giribabu</h2>
+                <span className="text-xs text-slate-300 font-medium">President & Managing Trustee</span>
+              </div>
               
-              <div className="space-y-4 text-sm text-slate-300">
+              <div className="space-y-4 text-sm text-slate-300 border-t border-slate-700/80 pt-5">
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 text-amber-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-white">Mailing Address:</strong>
-                    <span className="font-light block mt-1">[VERIFIED DATA REQUIRED]</span>
+                  <div className="space-y-2 text-xs">
+                    <div>
+                      <strong className="block text-white font-bold uppercase tracking-wider text-[10px]">Registered Office:</strong>
+                      <span className="font-light block mt-0.5 leading-relaxed">
+                        # 3-150, Main Street, Bypureddy Palem, Narsipatnam, Anakapalli Dist., A.P. - 531116
+                      </span>
+                    </div>
+                    <div>
+                      <strong className="block text-white font-bold uppercase tracking-wider text-[10px]">Corporate Office:</strong>
+                      <span className="font-light block mt-0.5 leading-relaxed">
+                        # 4-6-17/1, S1, Kamal's Castle, Savarkar Nagar, Nacharam, Hyd - 500076, Telangana
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -79,7 +93,9 @@ export default function ContactPage() {
                   <Phone className="w-5 h-5 mr-3 text-amber-500 flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-white">Telephone Support:</strong>
-                    <span className="font-light block mt-1">[VERIFIED DATA REQUIRED]</span>
+                    <a href="tel:8500863000" className="font-medium block mt-1 hover:text-amber-400 transition-colors">
+                      +91 8500863000 / +91 9885126368
+                    </a>
                   </div>
                 </div>
 
@@ -87,8 +103,8 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5 mr-3 text-amber-500 flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-white">Email Address:</strong>
-                    <a href="mailto:info@bbmfoundation.org" className="font-light block mt-1 hover:text-white transition-colors">
-                      info@bbmfoundation.org
+                    <a href="mailto:bbmindiafoundation@gmail.com" className="font-medium block mt-1 hover:text-amber-400 transition-colors">
+                      bbmindiafoundation@gmail.com
                     </a>
                   </div>
                 </div>

@@ -43,25 +43,28 @@ export default async function TransparencyPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm divide-y md:divide-y-0 md:divide-x divide-slate-100">
             <div className="space-y-1">
-              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Registration Number</span>
-              <span className="block text-sm font-mono font-bold text-primary">[VERIFIED DATA REQUIRED]</span>
+              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Permanent Account Number (PAN)</span>
+              <span className="block text-sm font-mono font-bold text-primary">AAFTB3316H</span>
+              <span className="block text-[10px] text-slate-500">Formed: 16/11/2023</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0 md:pl-6">
-              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Tax Exemption Code</span>
-              <span className="block text-sm font-mono font-bold text-primary">[VERIFIED DATA REQUIRED]</span>
+              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Tax Exemption Status</span>
+              <span className="block text-sm font-bold text-emerald-600">80G Certified</span>
+              <span className="block text-[10px] text-slate-500">Income Tax Dept. Govt of India</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0 md:pl-6">
-              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">NGO Darpan ID</span>
-              <span className="block text-sm font-mono font-bold text-primary">[VERIFIED DATA REQUIRED]</span>
+              <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Bank Partner</span>
+              <span className="block text-sm font-bold text-primary">Union Bank of India</span>
+              <span className="block text-[10px] font-mono text-slate-500">IFSC: UBIN0555142</span>
             </div>
           </div>
           
-          <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 rounded-xl p-4 flex items-start gap-3">
-            <ShieldAlert className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl p-4 flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
             <div className="text-xs space-y-1">
-              <strong className="block text-amber-800">Registration Audit Status</strong>
+              <strong className="block text-emerald-800 font-bold">Verified Statutory Information</strong>
               <p>
-                The foundation's regulatory certificates and tax filings are undergoing formal vetting. Registration numbers will be populated here directly upon completion of the verification process.
+                BBM Foundation is officially incorporated under the Income Tax Department Govt. of India with e-PAN Card <span className="font-mono font-bold">AAFTB3316H</span> (Incorporation: 16/11/2023). All contributions directly support charitable and social-impact initiatives.
               </p>
             </div>
           </div>

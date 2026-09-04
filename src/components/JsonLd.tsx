@@ -21,8 +21,10 @@ export default function JsonLd() {
     ],
     "founder": {
       "@type": "Person",
-      "name": "[VERIFIED DATA REQUIRED]",
+      "name": "Dr. B. Giribabu (President & Managing Trustee)",
     },
+    "email": "bbmindiafoundation@gmail.com",
+    "telephone": "+91-8500863000",
     "sameAs": [
       "https://twitter.com/bbmfoundation",
       "https://www.facebook.com/bbmfoundation",
@@ -30,8 +32,10 @@ export default function JsonLd() {
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "[VERIFIED DATA REQUIRED]",
-      "addressLocality": "[VERIFIED DATA REQUIRED]",
+      "streetAddress": "# 3-150, Main Street, Bypureddy Palem",
+      "addressLocality": "Narsipatnam, Anakapalli Dist.",
+      "addressRegion": "Andhra Pradesh",
+      "postalCode": "531116",
       "addressCountry": "IN",
     },
   };

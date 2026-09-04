@@ -26,19 +26,30 @@ export default function Footer() {
             <p className="text-sm leading-relaxed max-w-sm text-slate-500">
               A premium social-impact and charitable foundation committed to creating meaningful change through service, opportunity creation, community development, and humanitarian initiatives.
             </p>
-            <div className="flex flex-col space-y-3 text-sm text-slate-500">
-              <div className="flex items-center">
-                <MapPin className="w-4 h-4 mr-3 text-secondary flex-shrink-0" />
-                <span>[VERIFIED DATA REQUIRED]</span>
+            <div className="flex flex-col space-y-3.5 text-sm text-slate-500">
+              <div className="flex items-start">
+                <MapPin className="w-4 h-4 mr-3 text-secondary flex-shrink-0 mt-1" />
+                <div className="text-xs space-y-1">
+                  <div>
+                    <strong className="text-slate-700 font-bold block">Reg. Office:</strong>
+                    <span># 3-150, Main Street, Bypureddy Palem, Narsipatnam, Anakapalli Dist., A.P. - 531116</span>
+                  </div>
+                  <div>
+                    <strong className="text-slate-700 font-bold block">Corp. Office:</strong>
+                    <span># 4-6-17/1, S1, Kamal's Castle, Savarkar Nagar, Nacharam, Hyd - 500076, Telangana</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 mr-3 text-secondary flex-shrink-0" />
-                <span>[VERIFIED DATA REQUIRED]</span>
+                <a href="tel:8500863000" className="hover:text-secondary font-medium transition-colors">
+                  +91 8500863000 / +91 9885126368
+                </a>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-3 text-secondary flex-shrink-0" />
-                <a href="mailto:info@bbmfoundation.org" className="hover:text-secondary transition-colors">
-                  info@bbmfoundation.org
+                <a href="mailto:bbmindiafoundation@gmail.com" className="hover:text-secondary font-medium transition-colors">
+                  bbmindiafoundation@gmail.com
                 </a>
               </div>
             </div>
