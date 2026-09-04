@@ -3,25 +3,33 @@ export const dynamic = "force-dynamic";
 import { ShieldAlert, CheckCircle, Users, Eye, Heart, Camera } from "lucide-react";
 import prisma from "@/lib/db";
 import AboutImageSlider from "@/components/AboutImageSlider";
+import { getSiteContent } from "@/lib/siteContent";
 
 export default async function AboutPage() {
   const team = await prisma.teamMember.findMany({
     orderBy: { order: "asc" },
   });
 
+  const defaultAbout = {
+    title: "About BBM Foundation",
+    subtitle: "Dedicated to restoring families, educating children, and empowering communities across Andhra Pradesh & Telangana.",
+    history: "Founded with a vision to eliminate orphanhood and uplift underprivileged communities, BBM Foundation has touched thousands of lives through direct action and partnership.",
+    mission: "To enable every child to thrive within a loving family and access life-changing opportunities for education and growth.",
+    vision: "A compassionate society where zero children are left orphaned or without quality education and protection.",
+    value1Title: "Compassion First",
+    value1Desc: "Serving every individual with dignity and unconditional care.",
+    value2Title: "Transparency",
+    value2Desc: "100% financial and operational accountability in every project.",
+    value3Title: "Community Impact",
+    value3Desc: "Sustainable programs designed for long-term community transformation.",
+  };
+
+  const aboutContent = await getSiteContent("about_page", defaultAbout);
+
   const values = [
-    {
-      title: "Transparency First",
-      desc: "Every donor contribution, programmatic milestone, and audited balance sheet is published in full compliance.",
-    },
-    {
-      title: "Sustainable Capability",
-      desc: "We focus on building long-term capability and self-reliance rather than encouraging temporary dependency.",
-    },
-    {
-      title: "Community Dignity",
-      desc: "We operate with deep respect for the cultural realities and dignity of every family and community we serve.",
-    },
+    { title: aboutContent.value1Title, desc: aboutContent.value1Desc },
+    { title: aboutContent.value2Title, desc: aboutContent.value2Desc },
+    { title: aboutContent.value3Title, desc: aboutContent.value3Desc },
   ];
 
   return (
@@ -53,10 +61,10 @@ export default async function AboutPage() {
         <div className="max-w-3xl space-y-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 font-display">Who We Are</span>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-[#114227]">
-            Driven by Purpose. Defined by Service.
+            {aboutContent.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 font-light leading-relaxed">
-            BBM Foundation is a social-impact institution dedicated to breaking structural barriers, creating pathways of self-reliance, and helping communities grow with dignity.
+            {aboutContent.subtitle}
           </p>
         </div>
 
@@ -66,10 +74,7 @@ export default async function AboutPage() {
             <h3 id="story-heading" className="text-2xl font-display font-bold text-[#114227]">Our Story</h3>
             <div className="w-12 h-1 bg-emerald-600 rounded"></div>
             <p className="text-xs sm:text-sm leading-relaxed font-light">
-              BBM Foundation was founded with a foundational resolve: that structural inequality can be addressed when individuals are equipped with access to quality learning, trade skills, and community safety nets.
-            </p>
-            <p className="text-xs sm:text-sm leading-relaxed font-light">
-              We started by addressing local learning gaps, providing mentorship, and organizing skill workshops. Over time, our programs grew to incorporate structured community wellness, women-led livelihood programs, and family support models. 
+              {aboutContent.history}
             </p>
             <p className="text-xs sm:text-sm leading-relaxed font-light italic border-l-4 border-emerald-600 pl-4 bg-emerald-50 p-4 rounded-r-lg text-emerald-950">
               "True social transformation is not about dependency; it is about building capability and matching it with meaningful opportunity."
@@ -116,7 +121,7 @@ export default async function AboutPage() {
             <Eye className="w-8 h-8 text-emerald-400" />
             <h4 className="text-xl font-bold font-display tracking-wide">Our Vision</h4>
             <p className="text-emerald-100/90 text-xs sm:text-sm leading-relaxed font-light">
-              To build an inclusive society where every individual has the structural opportunity to learn, develop capabilities, prosper, and contribute actively to their community with self-reliance.
+              {aboutContent.vision}
             </p>
           </div>
 
@@ -124,7 +129,7 @@ export default async function AboutPage() {
             <Heart className="w-8 h-8 text-emerald-700 fill-emerald-100" />
             <h4 className="text-xl font-bold font-display text-[#114227] tracking-wide">Our Mission</h4>
             <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-light">
-              To deliver practical programs in education support, vocational training, women’s livelihood facilitation, healthcare support, and youth responsibility, while maintaining absolute transparency and accountability.
+              {aboutContent.mission}
             </p>
           </div>
         </section>

@@ -10,6 +10,9 @@ interface PaymentScannerSectionProps {
     bankName?: string;
     accountNumber?: string;
     ifscCode?: string;
+    branch?: string;
+    panNumber?: string;
+    qrImageUrl?: string;
     taxNote?: string;
   };
 }
@@ -19,12 +22,14 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
   const [selectedAmount, setSelectedAmount] = useState<string>("2500");
 
   const upiId = scannerData?.upiId || "QR919885126368-0750@unionbankofindia";
+  const qrImageUrl = scannerData?.qrImageUrl || "/union_bank_qr.png";
   const accountDetails = {
     bankName: scannerData?.bankName || "Union Bank of India",
     accountName: scannerData?.accountName || "BBM FOUNDATION",
     accountNumber: scannerData?.accountNumber || "551401010050750",
     ifscCode: scannerData?.ifscCode || "UBIN0555142",
-    branch: "Narsipatnam Branch",
+    branch: scannerData?.branch || "Narsipatnam Branch",
+    panNumber: scannerData?.panNumber || "AAFTB3316H",
     taxNote: scannerData?.taxNote || "Donations to BBM Foundation are eligible for 80G tax benefit certificate under the Income Tax Act.",
   };
 
@@ -84,8 +89,8 @@ export default function PaymentScannerSection({ scannerData }: PaymentScannerSec
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center relative group-hover:border-emerald-400 transition-colors">
                 <div className="relative mx-auto w-56 h-auto bg-white p-2 rounded-xl shadow-md border border-slate-100 flex items-center justify-center overflow-hidden">
                   <img
-                    src="/union_bank_qr.png"
-                    alt="Union Bank BBM Foundation Official UPI QR Code"
+                    src={qrImageUrl}
+                    alt="BBM Foundation Official UPI QR Code"
                     className="w-full h-auto object-contain rounded-lg"
                   />
                 </div>

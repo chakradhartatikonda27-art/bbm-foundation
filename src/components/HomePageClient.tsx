@@ -53,6 +53,29 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
   const heroHighlight = heroData?.highlight || "VITAL";
   const heroSubtitle = heroData?.subtitle || "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.";
   const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920";
+  const heroPrimaryCtaText = heroData?.primaryCtaText || "I Want To Support Now";
+  const heroPrimaryCtaLink = heroData?.primaryCtaLink || "/donate";
+  const heroSecondaryCtaText = heroData?.secondaryCtaText || "Explore Services";
+  const heroSecondaryCtaLink = heroData?.secondaryCtaLink || "#understanding-cause";
+
+  const cardsData = siteContent?.action_cards || [
+    { title: "Helping Orphans Through Action", subtitle: "Learn more about our family-strengthening programs & learning communities.", buttonText: "I want to act right now", link: "/get-involved" },
+    { title: "Making A Measurable Difference", subtitle: "Learn more about how we study data & measure our success.", buttonText: "I want to learn more", link: "/impact" },
+    { title: "Resources To Create Change", subtitle: "Explore the BBM Roadmap, parenting guides & video library.", buttonText: "I want to read more", link: "/our-work" },
+  ];
+
+  const missionData = siteContent?.mission_vision;
+  const missionBadge = missionData?.badge || "Our Mission & Vision";
+  const missionHeading = missionData?.heading || "Building Stronger Families & Empowering Communities";
+  const missionParagraph1 = missionData?.paragraph1 || "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access.";
+  const missionParagraph2 = missionData?.paragraph2 || "We believe that every child deserves a loving family, quality education, and the opportunity to build a dignified future.";
+  const missionImageUrl = missionData?.imageUrl || "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200";
+
+  const calloutData = siteContent?.callout;
+  const calloutQuote = calloutData?.quote || "When we empower a single child with love and education, we transform generations. BBM Foundation stands as a bridge of hope for every family.";
+  const calloutAuthor = calloutData?.authorName || "Dr. B. Giribabu";
+  const calloutRole = calloutData?.authorRole || "President & Managing Trustee";
+  const calloutBgImage = calloutData?.bgImage || "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600";
 
   const galleryImages = [
     {

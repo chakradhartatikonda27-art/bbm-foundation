@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { FileText, Download, ShieldAlert, Key, CheckCircle, Scale } from "lucide-react";
 import prisma from "@/lib/db";
+import { getSiteContent } from "@/lib/siteContent";
 
 export const metadata = {
   title: "Transparency & Governance",
@@ -9,12 +10,23 @@ export const metadata = {
 };
 
 export default async function TransparencyPage() {
-  // Query all compliance documents
   const docs = await prisma.document.findMany({
     orderBy: { publishedYear: "desc" },
   });
 
-  // Split by category
+  const defaultTransparency = {
+    title: "Governance & Statutory Transparency",
+    subtitle: "As a serious social-impact organization, BBM Foundation operates under complete compliance codes, reporting audited financial sheets, terms, and safeguards.",
+    panNumber: "AAFTB3316H",
+    formationDate: "16/11/2023",
+    taxStatus: "80G Certified",
+    bankPartner: "Union Bank of India",
+    auditPromise: "BBM Foundation is officially incorporated under the Income Tax Department Govt. of India with e-PAN Card AAFTB3316H (Incorporation: 16/11/2023). All contributions directly support charitable and social-impact initiatives.",
+    legalEmail: "compliance@bbmfoundation.org",
+  };
+
+  const transparencyInfo = await getSiteContent("transparency_info", defaultTransparency);
+
   const policies = docs.filter((d) => d.category === "POLICY");
   const financials = docs.filter((d) => d.category === "FINANCIAL");
   const annuals = docs.filter((d) => d.category === "ANNUAL");
@@ -28,10 +40,10 @@ export default async function TransparencyPage() {
         <div className="max-w-3xl space-y-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">Trust Strip</span>
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold tracking-tight text-primary">
-            Governance & Statutory Transparency
+            {transparencyInfo.title}
           </h1>
           <p className="text-lg text-slate-500 font-light leading-relaxed">
-            As a serious social-impact organization, BBM Foundation operates under complete compliance codes, reporting audited financial sheets, terms, and safeguards.
+            {transparencyInfo.subtitle}
           </p>
         </div>
 
@@ -44,17 +56,17 @@ export default async function TransparencyPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm divide-y md:divide-y-0 md:divide-x divide-slate-100">
             <div className="space-y-1">
               <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Permanent Account Number (PAN)</span>
-              <span className="block text-sm font-mono font-bold text-primary">AAFTB3316H</span>
-              <span className="block text-[10px] text-slate-500">Formed: 16/11/2023</span>
+              <span className="block text-sm font-mono font-bold text-primary">{transparencyInfo.panNumber}</span>
+              <span className="block text-[10px] text-slate-500">Formed: {transparencyInfo.formationDate}</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0 md:pl-6">
               <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Tax Exemption Status</span>
-              <span className="block text-sm font-bold text-emerald-600">80G Certified</span>
+              <span className="block text-sm font-bold text-emerald-600">{transparencyInfo.taxStatus}</span>
               <span className="block text-[10px] text-slate-500">Income Tax Dept. Govt of India</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0 md:pl-6">
               <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">Bank Partner</span>
-              <span className="block text-sm font-bold text-primary">Union Bank of India</span>
+              <span className="block text-sm font-bold text-primary">{transparencyInfo.bankPartner}</span>
               <span className="block text-[10px] font-mono text-slate-500">IFSC: UBIN0555142</span>
             </div>
           </div>
@@ -64,7 +76,7 @@ export default async function TransparencyPage() {
             <div className="text-xs space-y-1">
               <strong className="block text-emerald-800 font-bold">Verified Statutory Information</strong>
               <p>
-                BBM Foundation is officially incorporated under the Income Tax Department Govt. of India with e-PAN Card <span className="font-mono font-bold">AAFTB3316H</span> (Incorporation: 16/11/2023). All contributions directly support charitable and social-impact initiatives.
+                {transparencyInfo.auditPromise}
               </p>
             </div>
           </div>

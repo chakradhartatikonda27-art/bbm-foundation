@@ -7,12 +7,24 @@ import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import DonateModal from "./DonateModal";
 
-export default function Navbar() {
+interface NavbarProps {
+  branding?: {
+    logoUrl?: string;
+    siteName?: string;
+    tagline?: string;
+  };
+}
+
+export default function Navbar({ branding }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const pathname = usePathname();
+
+  const logoUrl = branding?.logoUrl || "/logo.png";
+  const siteName = branding?.siteName || "BBM FOUNDATION";
+  const tagline = branding?.tagline || "World For Children & Families";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,16 +88,16 @@ export default function Navbar() {
             <div className="flex items-center gap-6">
               <Link href="/" className="group focus:outline-none flex items-center gap-3">
                 <img
-                  src="/logo.png"
-                  alt="BBM Foundation Logo"
+                  src={logoUrl}
+                  alt={`${siteName} Logo`}
                   className="h-11 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 filter drop-shadow-sm rounded-md"
                 />
                 <div className="flex flex-col">
                   <span className={`font-display font-black text-lg sm:text-xl tracking-tight transition-colors ${logoTextClass}`}>
-                    BBM FOUNDATION
+                    {siteName}
                   </span>
                   <span className="text-[8px] font-bold uppercase tracking-widest text-emerald-500 -mt-1 hidden sm:block">
-                    World For Children & Families
+                    {tagline}
                   </span>
                 </div>
               </Link>
