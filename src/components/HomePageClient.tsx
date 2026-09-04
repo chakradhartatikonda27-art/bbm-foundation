@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Heart, ChevronDown, BarChart3, Users, BookOpen, Megaphone, ArrowRight, Camera, Sparkles } from "lucide-react";
 import DonateModal from "./DonateModal";
+import PaymentScannerSection from "./PaymentScannerSection";
 
 interface Program {
   id: string;
@@ -431,6 +432,9 @@ export default function HomePageClient({ programs, stories, metrics }: HomePageC
 
         </div>
       </section>
+
+      {/* 3.5 INSTANT PAYMENT SCANNER SECTION (UPI & QR Code) */}
+      <PaymentScannerSection />
 
       {/* 4. NEW: PHOTO GALLERY / MOMENTS OF HOPE (Rich High-Res Field Photos) */}
       <section className="py-20 sm:py-28 bg-[#f4f8f5] border-t border-slate-200" aria-labelledby="gallery-heading">
