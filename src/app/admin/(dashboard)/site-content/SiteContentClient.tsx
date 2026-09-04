@@ -20,6 +20,7 @@ import {
   Compass,
   BookOpen,
 } from "lucide-react";
+import ImageUploadInput from "@/components/ImageUploadInput";
 
 interface SiteContentClientProps {
   initialContent: Record<string, any>;
@@ -386,15 +387,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                 />
               </div>
             </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Hero Background Image URL</label>
-              <input
-                type="text"
-                value={hero.backgroundImage}
-                onChange={(e) => setHero({ ...hero, backgroundImage: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:border-emerald-500 focus:outline-none"
-              />
-            </div>
+            <ImageUploadInput
+              label="Upload Hero Background Photo from Computer / Drive"
+              value={hero.backgroundImage}
+              onChange={(url) => setHero({ ...hero, backgroundImage: url })}
+            />
           </div>
           <button
             type="button"
@@ -415,15 +412,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
             Header Branding & Site Logo
           </h2>
           <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Logo Image URL</label>
-              <input
-                type="text"
-                value={branding.logoUrl}
-                onChange={(e) => setBranding({ ...branding, logoUrl: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:border-emerald-500 focus:outline-none"
-              />
-            </div>
+            <ImageUploadInput
+              label="Upload Official Logo Photo from Computer / Drive"
+              value={branding.logoUrl}
+              onChange={(url) => setBranding({ ...branding, logoUrl: url })}
+            />
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Foundation / Site Name</label>
               <input
@@ -511,6 +504,15 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                   }}
                   className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-mono text-emerald-400 focus:outline-none"
                 />
+                <ImageUploadInput
+                  label={`Upload Card #${idx + 1} Photo from Computer / Drive`}
+                  value={card.imageUrl || ""}
+                  onChange={(url) => {
+                    const updated = [...actionCards];
+                    updated[idx].imageUrl = url;
+                    setActionCards(updated);
+                  }}
+                />
               </div>
             ))}
           </div>
@@ -569,15 +571,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-300 focus:outline-none"
               />
             </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Side Image URL</label>
-              <input
-                type="text"
-                value={missionVision.imageUrl}
-                onChange={(e) => setMissionVision({ ...missionVision, imageUrl: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:outline-none"
-              />
-            </div>
+            <ImageUploadInput
+              label="Upload Mission & Vision Side Photo from Computer / Drive"
+              value={missionVision.imageUrl}
+              onChange={(url) => setMissionVision({ ...missionVision, imageUrl: url })}
+            />
 
             <div className="pt-4 border-t border-slate-800 space-y-4">
               <h3 className="text-xs font-bold text-emerald-400 uppercase tracking-widest">4 Core Pillars</h3>
@@ -697,15 +695,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                 />
               </div>
             </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Background Image URL</label>
-              <input
-                type="text"
-                value={callout.bgImage}
-                onChange={(e) => setCallout({ ...callout, bgImage: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:outline-none"
-              />
-            </div>
+            <ImageUploadInput
+              label="Upload Callout Banner Photo from Computer / Drive"
+              value={callout.bgImage}
+              onChange={(url) => setCallout({ ...callout, bgImage: url })}
+            />
           </div>
           <button
             type="button"
@@ -735,15 +729,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm font-mono font-bold text-emerald-400 focus:outline-none"
               />
             </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">QR Code Image URL</label>
-              <input
-                type="text"
-                value={scanner.qrImageUrl}
-                onChange={(e) => setScanner({ ...scanner, qrImageUrl: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:outline-none"
-              />
-            </div>
+            <ImageUploadInput
+              label="Upload Payment QR Scanner Photo from Computer / Drive"
+              value={scanner.qrImageUrl}
+              onChange={(url) => setScanner({ ...scanner, qrImageUrl: url })}
+            />
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Account Name</label>
               <input

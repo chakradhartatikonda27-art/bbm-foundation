@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import { Edit2, Trash2, Plus, X, Check, Eye, ToggleLeft, ShieldAlert } from "lucide-react";
 import { createProgram, updateProgram, deleteProgram } from "@/app/actions/programs";
 
+import ImageUploadInput from "@/components/ImageUploadInput";
+
 interface Program {
   id: string;
   title: string;
@@ -23,6 +25,7 @@ export default function ProgramsClient({ programs }: ProgramsClientProps) {
   const [formMode, setFormMode] = useState<"list" | "create" | "edit">("list");
   const [editingProgram, setEditingProgram] = useState<Program | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [formImageUrl, setFormImageUrl] = useState<string>("");
 
   const categories = [
     { value: "EDUCATION", label: "Education" },
@@ -35,12 +38,14 @@ export default function ProgramsClient({ programs }: ProgramsClientProps) {
 
   const handleEditClick = (prog: Program) => {
     setEditingProgram(prog);
+    setFormImageUrl(prog.imageUrl || "");
     setFormMode("edit");
     setError(null);
   };
 
   const handleCreateClick = () => {
     setEditingProgram(null);
+    setFormImageUrl("");
     setFormMode("create");
     setError(null);
   };
@@ -177,20 +182,13 @@ export default function ProgramsClient({ programs }: ProgramsClientProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col space-y-1.5">
-                <label htmlFor="imageUrl" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  Image URL
-                </label>
-                <input
-                  type="text"
-                  id="imageUrl"
-                  name="imageUrl"
-                  defaultValue={editingProgram?.imageUrl || ""}
-                  placeholder="https://images.unsplash.com/..."
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 h-12 text-xs text-white focus:outline-none focus:border-amber-500"
-                />
-              </div>
+            <div className="space-y-4">
+              <input type="hidden" name="imageUrl" value={formImageUrl} />
+              <ImageUploadInput
+                label="Upload Program Photo from Computer / Drive"
+                value={formImageUrl}
+                onChange={(url) => setFormImageUrl(url)}
+              />
 
               <div className="flex flex-col space-y-1.5">
                 <label htmlFor="verified" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">

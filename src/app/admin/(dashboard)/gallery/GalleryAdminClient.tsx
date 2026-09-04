@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Image as ImageIcon, Plus, Edit2, Trash2, X, Check, ArrowUp, ArrowDown } from "lucide-react";
+import ImageUploadInput from "@/components/ImageUploadInput";
 
 interface GalleryItem {
   id: string;
@@ -221,17 +222,11 @@ export default function GalleryAdminClient({ initialImages }: GalleryAdminClient
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Image URL *</label>
-                <input
-                  type="text"
-                  required
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:border-emerald-500 focus:outline-none"
-                />
-              </div>
+              <ImageUploadInput
+                label="Upload Photo from Computer / Drive *"
+                value={imageUrl}
+                onChange={(url) => setImageUrl(url)}
+              />
 
               <div>
                 <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Display Sort Order</label>
