@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { decryptSession } from "@/lib/crypto";
-import { LayoutDashboard, BookOpen, MessageSquare, Heart, LogOut, Globe, UserCheck, ShieldCheck } from "lucide-react";
+import { LayoutDashboard, BookOpen, MessageSquare, Heart, LogOut, Globe, UserCheck, ShieldCheck, FileText, Calendar, GraduationCap, Image, BarChart3, CreditCard } from "lucide-react";
 
 async function handleLogout() {
   "use server";
@@ -28,9 +28,14 @@ export default async function DashboardLayout({
 
   const sidebarLinks = [
     { name: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
-    { name: "Programs", href: "/admin/programs", icon: BookOpen },
+    { name: "Site Content & UPI", href: "/admin/site-content", icon: FileText },
+    { name: "Programs CMS", href: "/admin/programs", icon: BookOpen },
     { name: "Stories of Change", href: "/admin/stories", icon: Heart },
-    { name: "Donations Log", href: "/admin/donations", icon: Heart },
+    { name: "Events & Gatherings", href: "/admin/events", icon: Calendar },
+    { name: "Resources & E-Learning", href: "/admin/resources", icon: GraduationCap },
+    { name: "Photo Gallery", href: "/admin/gallery", icon: Image },
+    { name: "Impact Metrics", href: "/admin/metrics", icon: BarChart3 },
+    { name: "Donations Audit Log", href: "/admin/donations", icon: CreditCard },
     { name: "Contact Messages", href: "/admin/messages", icon: MessageSquare },
   ];
 

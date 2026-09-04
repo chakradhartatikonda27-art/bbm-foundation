@@ -3,17 +3,28 @@
 import { useState } from "react";
 import { QrCode, Copy, Check, ShieldCheck, Heart, Smartphone, Sparkles, CreditCard, Award } from "lucide-react";
 
-export default function PaymentScannerSection() {
+interface PaymentScannerSectionProps {
+  scannerData?: {
+    upiId?: string;
+    accountName?: string;
+    bankName?: string;
+    accountNumber?: string;
+    ifscCode?: string;
+    taxNote?: string;
+  };
+}
+
+export default function PaymentScannerSection({ scannerData }: PaymentScannerSectionProps) {
   const [copied, setCopied] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState<string>("2500");
 
-  const upiId = "bbmfoundation@upi";
+  const upiId = scannerData?.upiId || "bbmfoundation@upi";
   const accountDetails = {
-    bankName: "State Bank of India",
-    accountName: "BBM FOUNDATION",
-    accountNumber: "4289010054321",
-    ifscCode: "SBIN0004562",
-    branch: "Main Branch, Hyderabad",
+    bankName: scannerData?.bankName || "State Bank of India",
+    accountName: scannerData?.accountName || "BBM FOUNDATION",
+    accountNumber: scannerData?.accountNumber || "4289010054321",
+    ifscCode: scannerData?.ifscCode || "SBIN0004562",
+    taxNote: scannerData?.taxNote || "Donations to BBM Foundation are eligible for 80G tax benefit certificate under the Income Tax Act.",
   };
 
   const handleCopyUPI = () => {

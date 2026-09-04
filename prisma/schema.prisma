@@ -7,17 +7,24 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(uuid())
-  email        String @unique
+  id           String   @id @default(uuid())
+  email        String   @unique
   passwordHash String
-  role         String // SUPER_ADMIN, CONTENT_ADMIN, PROGRAM_MANAGER, FINANCE_ADMIN, COMM_MANAGER
+  role         String   // SUPER_ADMIN, CONTENT_ADMIN, PROGRAM_MANAGER, FINANCE_ADMIN, COMM_MANAGER
   createdAt    DateTime @default(now())
 }
 
+model SiteContent {
+  id        String   @id @default("default")
+  key       String   @unique // e.g. "hero", "payment_scanner", "contact_info"
+  content   String   // JSON stringified payload
+  updatedAt DateTime @updatedAt
+}
+
 model Program {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String
-  category    String // EDUCATION, SKILLS, WOMEN_FAMILY, YOUTH, HEALTH, COMMUNITY, HUMANITARIAN, OPPORTUNITY
+  category    String   // EDUCATION, SKILLS, WOMEN_FAMILY, YOUTH, HEALTH, COMMUNITY, HUMANITARIAN, OPPORTUNITY
   description String
   imageUrl    String?
   status      String   @default("ACTIVE") // ACTIVE, DRAFT, ARCHIVED
@@ -26,7 +33,7 @@ model Program {
 }
 
 model Story {
-  id           String @id @default(uuid())
+  id           String   @id @default(uuid())
   title        String
   author       String
   challenge    String
@@ -37,8 +44,44 @@ model Story {
   publishedAt  DateTime @default(now())
 }
 
+model Event {
+  id               String   @id @default(uuid())
+  title            String
+  category         String   // REGIONAL_GATHERING, WEBINAR, CONFERENCE, WORKSHOP
+  date             String
+  location         String
+  description      String
+  speakerName      String?
+  speakerRole      String?
+  speakerBio       String?
+  imageUrl         String?
+  registrationLink String?
+  status           String   @default("UPCOMING") // UPCOMING, COMPLETED, CANCELLED
+  createdAt        DateTime @default(now())
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  title       String
+  category    String   // E_LEARNING, ROADMAP, VIDEO, COMMUNITY, PROTECTION_DAY, HOPE_GROUPS
+  description String
+  linkUrl     String?
+  format      String   @default("PDF") // PDF, VIDEO, COURSE, GUIDE
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model GalleryImage {
+  id        String   @id @default(uuid())
+  title     String
+  category  String
+  imageUrl  String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
 model Metric {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   label       String
   value       String
   description String?
@@ -47,42 +90,42 @@ model Metric {
 }
 
 model TeamMember {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
   role      String
   bio       String?
   imageUrl  String?
-  order     Int    @default(0)
+  order     Int      @default(0)
   createdAt DateTime @default(now())
 }
 
 model Document {
-  id            String @id @default(uuid())
+  id            String   @id @default(uuid())
   title         String
-  category      String // FINANCIAL, ANNUAL, LEGAL, POLICY
+  category      String   // FINANCIAL, ANNUAL, LEGAL, POLICY
   fileUrl       String?
   publishedYear Int
   createdAt     DateTime @default(now())
 }
 
 model Donation {
-  id         String @id @default(uuid())
+  id         String   @id @default(uuid())
   donorName  String
   donorEmail String
   donorPhone String?
   amount     Float
   purpose    String
-  status     String // INITIATED, SUCCESS, FAILED
+  status     String   // INITIATED, SUCCESS, FAILED
   paymentId  String?
   createdAt  DateTime @default(now())
 }
 
 model ContactMessage {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
   email     String
   phone     String?
-  purpose   String // DONATION, VOLUNTEER, PARTNERSHIP, OTHER
+  purpose   String   // DONATION, VOLUNTEER, PARTNERSHIP, OTHER
   message   String
   createdAt DateTime @default(now())
 }

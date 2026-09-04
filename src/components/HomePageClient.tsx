@@ -36,9 +36,10 @@ interface HomePageClientProps {
   programs: Program[];
   stories: Story[];
   metrics: Metric[];
+  siteContent?: Record<string, any>;
 }
 
-export default function HomePageClient({ programs, stories, metrics }: HomePageClientProps) {
+export default function HomePageClient({ programs, stories, metrics, siteContent }: HomePageClientProps) {
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [selectedPurpose, setSelectedPurpose] = useState<string>("Where Needed Most");
 
@@ -46,6 +47,12 @@ export default function HomePageClient({ programs, stories, metrics }: HomePageC
     if (purpose) setSelectedPurpose(purpose);
     setIsDonateOpen(true);
   };
+
+  const heroData = siteContent?.hero;
+  const heroTitle = heroData?.title || "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS";
+  const heroHighlight = heroData?.highlight || "VITAL";
+  const heroSubtitle = heroData?.subtitle || "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.";
+  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920";
 
   const galleryImages = [
     {
@@ -86,18 +93,28 @@ export default function HomePageClient({ programs, stories, metrics }: HomePageC
       <section 
         className="relative min-h-[85vh] sm:min-h-[90vh] -mt-20 pt-32 pb-24 sm:pt-40 sm:pb-28 flex flex-col justify-between items-center text-white bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.55), rgba(15, 30, 20, 0.75)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920')"
+          backgroundImage: `linear-gradient(to bottom, rgba(15, 30, 20, 0.55), rgba(15, 30, 20, 0.75)), url('${heroBgImage}')`
         }}
         aria-label="Introduction Hero"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 mt-10">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black tracking-tight uppercase leading-[1.15] drop-shadow-lg max-w-5xl mx-auto">
-            YOU CAN PLAY A <span className="text-emerald-400 font-extrabold underline decoration-emerald-400 decoration-wavy">VITAL</span> ROLE IN ATTAINING A WORLD WITHOUT ORPHANS
+            {heroTitle.includes(heroHighlight) ? (
+              <>
+                {heroTitle.split(heroHighlight)[0]}
+                <span className="text-emerald-400 font-extrabold underline decoration-emerald-400 decoration-wavy">
+                  {heroHighlight}
+                </span>
+                {heroTitle.split(heroHighlight)[1]}
+              </>
+            ) : (
+              heroTitle
+            )}
           </h1>
 
           <div className="max-w-3xl mx-auto bg-white p-6 sm:p-9 rounded-[2.5rem] shadow-2xl text-slate-800 border border-slate-100 transform hover:scale-[1.01] transition-all">
             <p className="text-base sm:text-xl font-medium text-slate-700 leading-relaxed font-sans">
-              Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.
+              {heroSubtitle}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <button
@@ -434,7 +451,7 @@ export default function HomePageClient({ programs, stories, metrics }: HomePageC
       </section>
 
       {/* 3.5 INSTANT PAYMENT SCANNER SECTION (UPI & QR Code) */}
-      <PaymentScannerSection />
+      <PaymentScannerSection scannerData={siteContent?.payment_scanner} />
 
       {/* 4. NEW: PHOTO GALLERY / MOMENTS OF HOPE (Rich High-Res Field Photos) */}
       <section className="py-20 sm:py-28 bg-[#f4f8f5] border-t border-slate-200" aria-labelledby="gallery-heading">
