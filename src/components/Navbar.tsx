@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import DonateModal from "./DonateModal";
 
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDonateOpen, setIsDonateOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -31,8 +32,16 @@ export default function Navbar() {
     { name: "Take action", href: "/get-involved" },
     { name: "Events", href: "/events" },
     { name: "Our Work", href: "/our-work" },
-    { name: "Resources", href: "/transparency" },
     { name: "Contact", href: "/contact" },
+  ];
+
+  const resourceDropdownItems = [
+    { name: "BBM Roadmap", href: "/resources/roadmap" },
+    { name: "Videos", href: "/resources/videos" },
+    { name: "For Communities & Churches", href: "/resources/community" },
+    { name: "Child Protection Day", href: "/resources/protection-day" },
+    { name: "Hope Groups", href: "/resources/hope-groups" },
+    { name: "e-Learning", href: "/resources/e-learning" },
   ];
 
   const isHomepage = pathname === "/";
@@ -132,6 +141,51 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* Resources Dropdown Menu matching Screenshot 1 */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsResourcesOpen(true)}
+                onMouseLeave={() => setIsResourcesOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                  className={`inline-flex items-center gap-1 text-sm font-semibold py-1 transition-all ${
+                    pathname.startsWith("/resources")
+                      ? (shouldBeTransparent ? "bg-[#2563eb] text-white px-3 py-1 rounded-full font-bold" : "bg-[#2563eb] text-white px-3 py-1 rounded-full font-bold")
+                      : linkColorClass
+                  }`}
+                >
+                  Resources
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+
+                {/* Dropdown Card matching Screenshot 1 dark floating menu */}
+                {isResourcesOpen && (
+                  <div className="absolute right-0 top-full pt-2 w-56 animate-fade-in z-50">
+                    <div className="bg-[#2a2d32] text-white rounded-2xl shadow-2xl p-2 border border-slate-700/60 space-y-1">
+                      {resourceDropdownItems.map((item) => {
+                        const isSubActive = pathname === item.href;
+                        return (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsResourcesOpen(false)}
+                            className={`block px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                              isSubActive
+                                ? "bg-[#2563eb] text-white font-bold"
+                                : "text-slate-200 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
             </nav>
 
             {/* Header Actions: Green Pill Donate Button */}
