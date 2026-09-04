@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { decryptSession } from "@/lib/crypto";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export async function PUT(
   request: Request,
@@ -19,13 +19,13 @@ export async function PUT(
 
     const body = await request.json();
 
-    const updated = await db.event.update({
+    const updated = await prisma.event.update({
       where: { id },
       data: body,
     });
 
     return NextResponse.json({ success: true, event: updated });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update event" }, { status: 500 });
   }
 }
@@ -44,10 +44,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
     }
 
-    await db.event.delete({ where: { id } });
+    await prisma.event.delete({ where: { id } });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete event" }, { status: 500 });
   }
 }

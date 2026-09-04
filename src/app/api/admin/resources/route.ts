@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { decryptSession } from "@/lib/crypto";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export async function GET() {
   try {
-    const resources = await db.resource.findMany({
+    const resources = await prisma.resource.findMany({
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json({ success: true, resources });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch resources" }, { status: 500 });
   }
 }
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Title, category, and description are required." }, { status: 400 });
     }
 
-    const resource = await db.resource.create({
+    const resource = await prisma.resource.create({
       data: {
         title,
         category,
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true, resource }, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create resource" }, { status: 500 });
   }
 }

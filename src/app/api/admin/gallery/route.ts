@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { decryptSession } from "@/lib/crypto";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export async function GET() {
   try {
-    const images = await db.galleryImage.findMany({
+    const images = await prisma.galleryImage.findMany({
       orderBy: { order: "asc" },
     });
     return NextResponse.json({ success: true, images });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch gallery images" }, { status: 500 });
   }
 }
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Title, category, and imageUrl are required." }, { status: 400 });
     }
 
-    const image = await db.galleryImage.create({
+    const image = await prisma.galleryImage.create({
       data: {
         title,
         category,
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true, image }, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create gallery image" }, { status: 500 });
   }
 }

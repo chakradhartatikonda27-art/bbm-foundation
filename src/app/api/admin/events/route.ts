@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { decryptSession } from "@/lib/crypto";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export async function GET() {
   try {
-    const events = await db.event.findMany({
+    const events = await prisma.event.findMany({
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json({ success: true, events });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch events" }, { status: 500 });
   }
 }
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Title, category, date, location, and description are required." }, { status: 400 });
     }
 
-    const event = await db.event.create({
+    const event = await prisma.event.create({
       data: {
         title,
         category,
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true, event }, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create event" }, { status: 500 });
   }
 }

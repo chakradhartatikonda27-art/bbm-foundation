@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { decryptSession } from "@/lib/crypto";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export async function GET() {
   try {
-    const metrics = await db.metric.findMany({
+    const metrics = await prisma.metric.findMany({
       orderBy: { createdAt: "asc" },
     });
     return NextResponse.json({ success: true, metrics });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch metrics" }, { status: 500 });
   }
 }
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Label and value are required." }, { status: 400 });
     }
 
-    const metric = await db.metric.create({
+    const metric = await prisma.metric.create({
       data: {
         label,
         value,
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true, metric }, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create metric" }, { status: 500 });
   }
 }

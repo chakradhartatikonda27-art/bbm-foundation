@@ -144,7 +144,9 @@ export default function MetricsAdminClient({ initialMetrics }: MetricsAdminClien
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-black font-display text-emerald-400">{item.value}</span>
                 {item.verified && (
-                  <ShieldCheck className="w-5 h-5 text-emerald-400" title="Verified Metric" />
+                  <span title="Verified Metric">
+                    <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                  </span>
                 )}
               </div>
               <h3 className="text-sm font-bold font-display text-white">{item.label}</h3>

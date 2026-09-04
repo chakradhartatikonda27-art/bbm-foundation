@@ -160,7 +160,9 @@ export default function ResourcesAdminClient({ initialResources }: ResourcesAdmi
                     {item.format}
                   </span>
                   {item.featured && (
-                    <Star className="w-4 h-4 text-amber-400 fill-current" title="Featured Resource" />
+                    <span title="Featured Resource">
+                      <Star className="w-4 h-4 text-amber-400 fill-current" />
+                    </span>
                   )}
                 </div>
               </div>

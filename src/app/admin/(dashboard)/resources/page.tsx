@@ -1,8 +1,8 @@
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 import ResourcesAdminClient from "./ResourcesAdminClient";
 
 export default async function AdminResourcesPage() {
-  const resources = await db.resource.findMany({
+  const resources = await prisma.resource.findMany({
     orderBy: { createdAt: "desc" },
   });
 
