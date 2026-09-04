@@ -73,10 +73,12 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-20">
             {/* Logo & Social Icons */}
             <div className="flex items-center gap-6">
-              <Link href="/" className="group focus:outline-none flex items-center gap-2">
-                <div className="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-sm shadow-md group-hover:scale-105 transition-transform">
-                  BBM
-                </div>
+              <Link href="/" className="group focus:outline-none flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="BBM Foundation Logo"
+                  className="h-11 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 filter drop-shadow-sm rounded-md"
+                />
                 <div className="flex flex-col">
                   <span className={`font-display font-black text-lg sm:text-xl tracking-tight transition-colors ${logoTextClass}`}>
                     BBM FOUNDATION

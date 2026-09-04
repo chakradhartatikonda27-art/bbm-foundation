@@ -13,8 +13,13 @@ export default function Footer() {
           
           {/* Column 1: Info */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="inline-block focus:outline-none">
-              <span className="font-display font-extrabold text-2xl tracking-tight text-primary">
+            <Link href="/" className="inline-flex items-center gap-3 focus:outline-none group">
+              <img
+                src="/logo.png"
+                alt="BBM Foundation Logo"
+                className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-md"
+              />
+              <span className="font-display font-black text-2xl tracking-tight text-primary">
                 BBM FOUNDATION
               </span>
             </Link>

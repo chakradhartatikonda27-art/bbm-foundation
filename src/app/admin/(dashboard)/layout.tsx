@@ -40,13 +40,20 @@ export default async function DashboardLayout({
       <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between p-6">
         <div className="space-y-8">
           {/* Brand */}
-          <div className="flex flex-col">
-            <span className="font-display font-extrabold text-lg text-white tracking-tight">
-              BBM FOUNDATION
-            </span>
-            <span className="text-[9px] uppercase font-bold text-amber-500 tracking-widest mt-0.5">
-              CMS Portal Dashboard
-            </span>
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="BBM Foundation Logo"
+              className="h-10 w-auto object-contain rounded"
+            />
+            <div className="flex flex-col">
+              <span className="font-display font-extrabold text-lg text-white tracking-tight">
+                BBM FOUNDATION
+              </span>
+              <span className="text-[9px] uppercase font-bold text-emerald-400 tracking-widest -mt-0.5">
+                CMS Portal Dashboard
+              </span>
+            </div>
           </div>
 
           {/* User Details */}

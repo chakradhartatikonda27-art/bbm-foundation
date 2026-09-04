@@ -55,8 +55,13 @@ export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: 
         <div>
           {/* Header */}
           <div className="flex items-center justify-between">
-            <Link href="/" className="font-display font-extrabold text-xl tracking-tight text-[#114227]" onClick={onClose}>
-              BBM FOUNDATION
+            <Link href="/" className="font-display font-extrabold text-xl tracking-tight text-[#114227] flex items-center gap-2" onClick={onClose}>
+              <img
+                src="/logo.png"
+                alt="BBM Foundation Logo"
+                className="h-10 w-auto object-contain rounded"
+              />
+              <span>BBM FOUNDATION</span>
             </Link>
             <button
               type="button"

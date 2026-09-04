@@ -46,10 +46,12 @@ export default function AdminLoginPage() {
         <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
 
         {/* Brand */}
-        <div className="text-center space-y-3">
-          <div className="inline-flex p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-500 mx-auto">
-            <Lock className="w-6 h-6" />
-          </div>
+        <div className="text-center space-y-3 flex flex-col items-center">
+          <img
+            src="/logo.png"
+            alt="BBM Foundation Logo"
+            className="h-16 w-auto object-contain mx-auto rounded-lg shadow-md"
+          />
           <div>
             <h1 className="font-display font-extrabold text-2xl tracking-tight text-white">Admin Access Portal</h1>
             <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mt-1 block">
