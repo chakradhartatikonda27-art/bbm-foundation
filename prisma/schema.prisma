@@ -15,7 +15,7 @@ model User {
 }
 
 model SiteContent {
-  id        String   @id @default("default")
+  id        String   @id @default(uuid())
   key       String   @unique // e.g. "hero", "payment_scanner", "contact_info"
   content   String   // JSON stringified payload
   updatedAt DateTime @updatedAt
