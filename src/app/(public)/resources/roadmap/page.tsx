@@ -1,43 +1,61 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { Compass, CheckCircle2, ArrowRight } from "lucide-react";
+import { getSiteContent } from "@/lib/siteContent";
 
 export const metadata = {
   title: "BBM Roadmap — Resources",
   description: "The 4-cornerstone roadmap for broadscale collaboration, prevention, intervention, and living refreshed.",
 };
 
-export default function RoadmapPage() {
+export default async function RoadmapPage() {
+  const defaultRoadmap = {
+    title: "The BBM Roadmap",
+    subtitle: "Our 4-quadrant strategic guide for orphanhood prevention, family reunification, and community collaboration.",
+    cornerstone1Title: "Prevention",
+    cornerstone1Desc: "Strengthening families before crisis occurs through economic enablement, parenting education, and community support networks.",
+    cornerstone2Title: "Broadscale Collaboration",
+    cornerstone2Desc: "Uniting governments, NGOs, churches, and civic leaders under a shared mission to serve vulnerable children.",
+    cornerstone3Title: "Intervention",
+    cornerstone3Desc: "Providing immediate foster care, legal protection, and safe havens for children in emergency situations.",
+    cornerstone4Title: "Living Refreshed",
+    cornerstone4Desc: "Sustaining caregivers and advocates with spiritual renewal, mental health support, and peer hope groups.",
+  };
+
+  const roadmap = await getSiteContent("roadmap_page", defaultRoadmap);
+
   return (
     <div className="bg-white py-16 sm:py-24 animate-fade-up">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 font-display">Framework</span>
-          <h1 className="text-4xl font-bold font-display text-[#114227]">The BBM Roadmap</h1>
+          <h1 className="text-4xl font-bold font-display text-[#114227]">{roadmap.title}</h1>
           <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-            Our 4-quadrant strategic guide for orphanhood prevention, family reunification, and community collaboration.
+            {roadmap.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-sky-50 p-8 rounded-3xl border border-sky-200 space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-700">Cornerstone 1</span>
-            <h3 className="text-xl font-bold text-slate-900">Prevention</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">Strengthening families before crisis occurs through economic enablement, parenting education, and community support networks.</p>
+            <h3 className="text-xl font-bold text-slate-900">{roadmap.cornerstone1Title}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">{roadmap.cornerstone1Desc}</p>
           </div>
           <div className="bg-emerald-50 p-8 rounded-3xl border border-emerald-200 space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Cornerstone 2</span>
-            <h3 className="text-xl font-bold text-slate-900">Broadscale Collaboration</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">Uniting governments, NGOs, churches, and civic leaders under a shared mission to serve vulnerable children.</p>
+            <h3 className="text-xl font-bold text-slate-900">{roadmap.cornerstone2Title}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">{roadmap.cornerstone2Desc}</p>
           </div>
           <div className="bg-amber-50 p-8 rounded-3xl border border-amber-200 space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-700">Cornerstone 3</span>
-            <h3 className="text-xl font-bold text-slate-900">Intervention</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">Providing immediate foster care, legal protection, and safe havens for children in emergency situations.</p>
+            <h3 className="text-xl font-bold text-slate-900">{roadmap.cornerstone3Title}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">{roadmap.cornerstone3Desc}</p>
           </div>
           <div className="bg-rose-50 p-8 rounded-3xl border border-rose-200 space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-rose-700">Cornerstone 4</span>
-            <h3 className="text-xl font-bold text-slate-900">Living Refreshed</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">Sustaining caregivers and advocates with spiritual renewal, mental health support, and peer hope groups.</p>
+            <h3 className="text-xl font-bold text-slate-900">{roadmap.cornerstone4Title}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">{roadmap.cornerstone4Desc}</p>
           </div>
         </div>
 

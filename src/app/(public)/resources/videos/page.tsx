@@ -1,17 +1,33 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { Play } from "lucide-react";
+import prisma from "@/lib/db";
 
 export const metadata = {
   title: "Videos & Media — Resources",
   description: "Watch video stories of impact, leadership interviews, and field updates.",
 };
 
-export default function VideosPage() {
-  const videos = [
-    { title: "Refresh Camps Summer Highlights 2026", duration: "12:45", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600" },
-    { title: "Servant Leadership in Child Advocacy", duration: "18:20", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600" },
-    { title: "Community Reunification in Uganda", duration: "09:30", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600" },
+export default async function VideosPage() {
+  const dbResources = await prisma.resource.findMany({
+    where: { category: "VIDEO" },
+  });
+
+  const defaultVideos = [
+    { title: "Refresh Camps Summer Highlights 2026", duration: "12:45", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600", linkUrl: "#" },
+    { title: "Servant Leadership in Child Advocacy", duration: "18:20", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600", linkUrl: "#" },
+    { title: "Community Reunification in South India", duration: "09:30", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600", linkUrl: "#" },
   ];
+
+  const videoList = dbResources.length > 0
+    ? dbResources.map((r) => ({
+        title: r.title,
+        duration: r.format || "Video",
+        img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600",
+        linkUrl: r.linkUrl || "#",
+      }))
+    : defaultVideos;
 
   return (
     <div className="bg-white py-16 sm:py-24 animate-fade-up">
@@ -25,9 +41,15 @@ export default function VideosPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {videos.map((v, i) => (
-            <div key={i} className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 shadow-sm space-y-4 p-4">
-              <div className="relative rounded-2xl overflow-hidden aspect-video bg-slate-900 group cursor-pointer">
+          {videoList.map((v, i) => (
+            <a
+              key={i}
+              href={v.linkUrl}
+              target={v.linkUrl !== "#" ? "_blank" : "_self"}
+              rel="noreferrer"
+              className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 shadow-sm space-y-4 p-4 block group"
+            >
+              <div className="relative rounded-2xl overflow-hidden aspect-video bg-slate-900 cursor-pointer">
                 <img src={v.img} alt={v.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -38,11 +60,12 @@ export default function VideosPage() {
                   {v.duration}
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-slate-900">{v.title}</h3>
-            </div>
+              <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">{v.title}</h3>
+            </a>
           ))}
         </div>
       </div>
     </div>
   );
 }
+

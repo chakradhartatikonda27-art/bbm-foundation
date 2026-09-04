@@ -18,6 +18,7 @@ import {
   Zap,
   MessageSquareQuote,
   Compass,
+  BookOpen,
 } from "lucide-react";
 
 interface SiteContentClientProps {
@@ -228,6 +229,20 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
     }
   };
 
+  // 13. Roadmap & Resources Services Form
+  const [roadmapPage, setRoadmapPage] = useState({
+    title: initialContent?.roadmap_page?.title || "The BBM Roadmap",
+    subtitle: initialContent?.roadmap_page?.subtitle || "Our 4-quadrant strategic guide for orphanhood prevention, family reunification, and community collaboration.",
+    cornerstone1Title: initialContent?.roadmap_page?.cornerstone1Title || "Prevention",
+    cornerstone1Desc: initialContent?.roadmap_page?.cornerstone1Desc || "Strengthening families before crisis occurs through economic enablement, parenting education, and community support networks.",
+    cornerstone2Title: initialContent?.roadmap_page?.cornerstone2Title || "Broadscale Collaboration",
+    cornerstone2Desc: initialContent?.roadmap_page?.cornerstone2Desc || "Uniting governments, NGOs, churches, and civic leaders under a shared mission to serve vulnerable children.",
+    cornerstone3Title: initialContent?.roadmap_page?.cornerstone3Title || "Intervention",
+    cornerstone3Desc: initialContent?.roadmap_page?.cornerstone3Desc || "Providing immediate foster care, legal protection, and safe havens for children in emergency situations.",
+    cornerstone4Title: initialContent?.roadmap_page?.cornerstone4Title || "Living Refreshed",
+    cornerstone4Desc: initialContent?.roadmap_page?.cornerstone4Desc || "Sustaining caregivers and advocates with spiritual renewal, mental health support, and peer hope groups.",
+  });
+
   const tabs = [
     { id: "hero", label: "Hero Banner", icon: Sparkles },
     { id: "branding", label: "Branding & Logo", icon: Layout },
@@ -238,6 +253,7 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
     { id: "about", label: "About Page", icon: Info },
     { id: "our_work", label: "Our Work Page", icon: Briefcase },
     { id: "impact", label: "Impact Page", icon: TrendingUp },
+    { id: "roadmap", label: "BBM Roadmap", icon: BookOpen },
     { id: "contact", label: "Contact & Offices", icon: Building },
     { id: "transparency", label: "Transparency", icon: ShieldCheck },
     { id: "footer", label: "Footer Section", icon: FileText },
@@ -1183,6 +1199,110 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
           >
             <Save className="w-4 h-4" />
             <span>Save Footer Settings</span>
+          </button>
+        </div>
+      )}
+
+      {/* TAB 13: ROADMAP & SERVICE CORNERSTONES */}
+      {activeTab === "roadmap" && (
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+          <h2 className="text-lg font-bold text-white font-display border-b border-slate-800 pb-3">
+            BBM Roadmap & Service Cornerstones
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Roadmap Page Title</label>
+              <input
+                type="text"
+                value={roadmapPage.title}
+                onChange={(e) => setRoadmapPage({ ...roadmapPage, title: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm font-bold text-white"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Roadmap Subtitle</label>
+              <textarea
+                rows={2}
+                value={roadmapPage.subtitle}
+                onChange={(e) => setRoadmapPage({ ...roadmapPage, subtitle: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-300"
+              />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <input
+                  type="text"
+                  placeholder="Cornerstone 1 Title"
+                  value={roadmapPage.cornerstone1Title}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone1Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white"
+                />
+                <textarea
+                  rows={2}
+                  placeholder="Cornerstone 1 Description"
+                  value={roadmapPage.cornerstone1Desc}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone1Desc: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300"
+                />
+              </div>
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <input
+                  type="text"
+                  placeholder="Cornerstone 2 Title"
+                  value={roadmapPage.cornerstone2Title}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone2Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white"
+                />
+                <textarea
+                  rows={2}
+                  placeholder="Cornerstone 2 Description"
+                  value={roadmapPage.cornerstone2Desc}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone2Desc: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300"
+                />
+              </div>
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <input
+                  type="text"
+                  placeholder="Cornerstone 3 Title"
+                  value={roadmapPage.cornerstone3Title}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone3Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white"
+                />
+                <textarea
+                  rows={2}
+                  placeholder="Cornerstone 3 Description"
+                  value={roadmapPage.cornerstone3Desc}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone3Desc: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300"
+                />
+              </div>
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <input
+                  type="text"
+                  placeholder="Cornerstone 4 Title"
+                  value={roadmapPage.cornerstone4Title}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone4Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white"
+                />
+                <textarea
+                  rows={2}
+                  placeholder="Cornerstone 4 Description"
+                  value={roadmapPage.cornerstone4Desc}
+                  onChange={(e) => setRoadmapPage({ ...roadmapPage, cornerstone4Desc: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            disabled={isSaving}
+            onClick={() => handleSave("roadmap_page", roadmapPage)}
+            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-md transition-all flex items-center gap-2"
+          >
+            <Save className="w-4 h-4" />
+            <span>Save BBM Roadmap Cornerstones</span>
           </button>
         </div>
       )}
