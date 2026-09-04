@@ -13,12 +13,12 @@ interface NavLink {
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenDonate?: () => void;
   navLinks: NavLink[];
 }
 
-export default function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: MobileMenuProps) {
   const pathname = usePathname();
-  const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Close on Escape key press
@@ -30,9 +30,7 @@ export default function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProp
     };
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
-      // Prevent body scroll when open
       document.body.style.overflow = "hidden";
-      // Focus the close button when opened
       setTimeout(() => closeButtonRef.current?.focus(), 100);
     }
     return () => {
@@ -57,14 +55,14 @@ export default function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProp
         <div>
           {/* Header */}
           <div className="flex items-center justify-between">
-            <Link href="/" className="font-display font-extrabold text-xl tracking-tight text-primary" onClick={onClose}>
+            <Link href="/" className="font-display font-extrabold text-xl tracking-tight text-[#114227]" onClick={onClose}>
               BBM FOUNDATION
             </Link>
             <button
               type="button"
               ref={closeButtonRef}
               onClick={onClose}
-              className="rounded-md p-2 text-primary hover:text-secondary focus:outline-none"
+              className="rounded-md p-2 text-slate-700 hover:text-emerald-700 focus:outline-none"
               aria-label="Close menu"
             >
               <X className="h-6 w-6" aria-hidden="true" />
@@ -74,19 +72,16 @@ export default function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProp
           {/* Links */}
           <nav className="mt-8 flow-root" aria-label="Mobile Navigation">
             <div className="my-2 divide-y divide-gray-100">
-              <div className="space-y-2 py-6">
+              <div className="space-y-2 py-4">
                 {navLinks.map((link) => {
-                  const isActive =
-                    link.href === "/"
-                      ? pathname === "/"
-                      : pathname.startsWith(link.href);
+                  const isActive = pathname.startsWith(link.href);
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
                       onClick={onClose}
-                      className={`block rounded-lg px-3 py-3 text-base font-semibold leading-7 transition-colors hover:bg-slate-50 hover:text-secondary ${
-                        isActive ? "text-secondary bg-slate-50" : "text-primary"
+                      className={`block rounded-lg px-3 py-3 text-base font-semibold leading-7 transition-colors hover:bg-emerald-50 hover:text-emerald-800 ${
+                        isActive ? "text-emerald-800 bg-emerald-50 font-bold" : "text-slate-700"
                       }`}
                     >
                       {link.name}
@@ -99,17 +94,21 @@ export default function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProp
         </div>
 
         {/* CTA in Mobile Menu */}
-        <div className="border-t border-border-gray pt-6">
-          <Link
-            href="/donate"
-            onClick={onClose}
-            className="flex w-full items-center justify-center rounded-full bg-amber-accent px-4 py-3 text-base font-semibold text-white shadow-md hover:bg-secondary hover:shadow-lg transition-all duration-200"
+        <div className="border-t border-slate-200 pt-6 space-y-3">
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenDonate) onOpenDonate();
+              else onClose();
+            }}
+            className="flex w-full items-center justify-center rounded-full bg-emerald-600 px-4 py-3.5 text-base font-black text-white shadow-md hover:bg-emerald-700 transition-all"
           >
             <Heart className="w-5 h-5 mr-2 fill-current text-white" />
-            Support Our Mission
-          </Link>
+            Donate Now
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
