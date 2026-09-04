@@ -171,163 +171,99 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
       <section id="understanding-cause" className="py-20 sm:py-28 bg-[#f4f8f5]" aria-labelledby="understanding-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
+          {/* Dynamic Action Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <h2 id="understanding-heading" className="text-3xl sm:text-4xl font-display font-bold text-[#114227]">
-              Understanding Our Child & Family Mission
+              {siteContent?.action_cards?.sectionTitle || "Understanding Our Child & Family Mission"}
             </h2>
             <p className="text-sm sm:text-base text-slate-600 font-medium">
-              How we build a future where every child has a strong family & life opportunities
+              {siteContent?.action_cards?.sectionSubtitle || "How we build a future where every child has a strong family & life opportunities"}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* CARD 1: Helping Orphans Through Action */}
-            <div className="bg-[#e9f2eb] rounded-[2rem] p-6 sm:p-8 border border-emerald-900/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6 overflow-hidden">
-              <div className="space-y-4">
-                {/* Header Image */}
-                <div className="relative rounded-2xl overflow-hidden h-44 shadow-sm border border-emerald-900/10">
-                  <img
-                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800"
-                    alt="Children in classroom learning"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-sky-600 flex items-center justify-center shadow-md">
-                    <Users className="w-5 h-5" />
+            {(() => {
+              const rawCards = Array.isArray(siteContent?.action_cards?.cards)
+                ? siteContent.action_cards.cards
+                : (Array.isArray(siteContent?.action_cards) ? siteContent.action_cards : null);
+
+              const defaultCards = [
+                {
+                  title: "Helping Orphans Through Action",
+                  bullets: ["Family-strengthening programs", "Learning communities", "Hope groups", "Educational initiatives"],
+                  buttonText: "I want to act right now",
+                  link: "/get-involved",
+                  imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800",
+                },
+                {
+                  title: "Making A Measurable Difference",
+                  bullets: ["How we study data & predict our impact", "How we gather statistics", "How we measure our success"],
+                  buttonText: "I want to learn more",
+                  link: "/impact",
+                  imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800",
+                },
+                {
+                  title: "Resources To Create Change",
+                  bullets: ["The BBM Roadmap", "Parenting & Care Tips", "Advocacy Resources", "Our vast library of videos & guides"],
+                  buttonText: "I want to read more",
+                  link: "/our-work",
+                  imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800",
+                },
+              ];
+
+              const cardList = rawCards && rawCards.length > 0
+                ? rawCards.map((c: any, i: number) => ({
+                    title: c.title || defaultCards[i % 3].title,
+                    bullets: typeof c.bullets === "string" 
+                      ? c.bullets.split(",") 
+                      : (Array.isArray(c.bullets) ? c.bullets : (c.subtitle ? [c.subtitle] : defaultCards[i % 3].bullets)),
+                    buttonText: c.buttonText || defaultCards[i % 3].buttonText,
+                    link: c.link || defaultCards[i % 3].link,
+                    imageUrl: c.imageUrl || defaultCards[i % 3].imageUrl,
+                  }))
+                : defaultCards;
+
+              return cardList.map((card: any, idx: number) => (
+                <div key={idx} className="bg-[#e9f2eb] rounded-[2rem] p-6 sm:p-8 border border-emerald-900/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6 overflow-hidden">
+                  <div className="space-y-4">
+                    {/* Header Image */}
+                    <div className="relative rounded-2xl overflow-hidden h-44 shadow-sm border border-emerald-900/10">
+                      <img
+                        src={card.imageUrl || defaultCards[idx % 3].imageUrl}
+                        alt={card.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-sky-600 flex items-center justify-center shadow-md">
+                        {idx === 0 ? <Users className="w-5 h-5" /> : idx === 1 ? <BarChart3 className="w-5 h-5" /> : <BookOpen className="w-5 h-5" />}
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold font-display text-slate-800 leading-tight">
+                      {card.title}
+                    </h3>
+
+                    <div className="space-y-2.5">
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Learn more about our:</p>
+                      <ul className="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
+                        {card.bullets.map((item: string, bIdx: number) => (
+                          <li key={bIdx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
+                            <span>{item.trim()}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
+
+                  <Link
+                    href={card.link || "/get-involved"}
+                    className="w-full inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-xs shadow-md transition-all"
+                  >
+                    {card.buttonText || "Learn More"}
+                  </Link>
                 </div>
-
-                <h3 className="text-xl font-bold font-display text-slate-800 leading-tight">
-                  Helping Orphans Through Action
-                </h3>
-
-                <div className="space-y-2.5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Learn more about our:</p>
-                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Family-strengthening programs</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Learning communities</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Hope groups</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Educational initiatives</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <Link
-                href="/get-involved"
-                className="w-full inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-xs shadow-md transition-all"
-              >
-                I want to act right now
-              </Link>
-            </div>
-
-            {/* CARD 2: Making A Measurable Difference */}
-            <div className="bg-[#e9f2eb] rounded-[2rem] p-6 sm:p-8 border border-emerald-900/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6 overflow-hidden">
-              <div className="space-y-4">
-                {/* Header Image */}
-                <div className="relative rounded-2xl overflow-hidden h-44 shadow-sm border border-emerald-900/10">
-                  <img
-                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800"
-                    alt="Team studying field impact data"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-sky-600 flex items-center justify-center shadow-md">
-                    <BarChart3 className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold font-display text-slate-800 leading-tight">
-                  Making A Measurable Difference
-                </h3>
-
-                <div className="space-y-2.5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Learn more about our:</p>
-                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>How we study data & predict our impact</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>How we gather statistics</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>How we measure our success</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <Link
-                href="/impact"
-                className="w-full inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-xs shadow-md transition-all"
-              >
-                I want to learn more
-              </Link>
-            </div>
-
-            {/* CARD 3: Resources To Create Change */}
-            <div className="bg-[#e9f2eb] rounded-[2rem] p-6 sm:p-8 border border-emerald-900/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6 overflow-hidden">
-              <div className="space-y-4">
-                {/* Header Image */}
-                <div className="relative rounded-2xl overflow-hidden h-44 shadow-sm border border-emerald-900/10">
-                  <img
-                    src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800"
-                    alt="Library and study resources"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-sky-600 flex items-center justify-center shadow-md">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold font-display text-slate-800 leading-tight">
-                  Resources To Create Change
-                </h3>
-
-                <div className="space-y-2.5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Learn more about our:</p>
-                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>The BBM Roadmap</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Parenting & Care Tips</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Advocacy Resources</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 flex-shrink-0"></span>
-                      <span>Our vast library of videos & guides</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <Link
-                href="/our-work"
-                className="w-full inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-xs shadow-md transition-all"
-              >
-                I want to read more
-              </Link>
-            </div>
-
+              ));
+            })()}
           </div>
         </div>
       </section>

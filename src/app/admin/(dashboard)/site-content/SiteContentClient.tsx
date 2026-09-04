@@ -54,14 +54,43 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
   });
 
   // 3. Quick Action Cards Form
-  const [actionCards, setActionCards] = useState(
-    initialContent?.action_cards || [
-      { title: "Give Today", subtitle: "Transform lives with direct child & family support", buttonText: "Donate Now", link: "/donate" },
-      { title: "Volunteer", subtitle: "Join our on-ground movement & mentorship groups", buttonText: "Get Involved", link: "/get-involved?tab=volunteer" },
-      { title: "Partner With Us", subtitle: "CSR collaborations for institutional impact", buttonText: "Corporate CSR", link: "/get-involved?tab=partner" },
-      { title: "Support Initiative", subtitle: "Fund education kits, protection & reunification", buttonText: "Explore Projects", link: "/get-involved?tab=initiative" },
-    ]
-  );
+  const [actionCardsData, setActionCardsData] = useState({
+    sectionTitle: initialContent?.action_cards?.sectionTitle || "Understanding Our Child & Family Mission",
+    sectionSubtitle: initialContent?.action_cards?.sectionSubtitle || "How we build a future where every child has a strong family & life opportunities",
+    cards: Array.isArray(initialContent?.action_cards?.cards) 
+      ? initialContent.action_cards.cards 
+      : (Array.isArray(initialContent?.action_cards) 
+          ? initialContent.action_cards.map((c: any) => ({
+              title: c.title || "",
+              bullets: c.subtitle || "",
+              buttonText: c.buttonText || "Learn More",
+              link: c.link || "/",
+              imageUrl: c.imageUrl || "",
+            }))
+          : [
+              {
+                title: "Helping Orphans Through Action",
+                bullets: "Family-strengthening programs, Learning communities, Hope groups, Educational initiatives",
+                buttonText: "I want to act right now",
+                link: "/get-involved",
+                imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800",
+              },
+              {
+                title: "Making A Measurable Difference",
+                bullets: "How we study data & predict our impact, How we gather statistics, How we measure our success",
+                buttonText: "I want to learn more",
+                link: "/impact",
+                imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800",
+              },
+              {
+                title: "Resources To Create Change",
+                bullets: "The BBM Roadmap, Parenting & Care Tips, Advocacy Resources, Our vast library of videos & guides",
+                buttonText: "I want to read more",
+                link: "/our-work",
+                imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800",
+              },
+            ])
+  });
 
   // 4. Mission & Vision Section Form
   const [missionVision, setMissionVision] = useState({
@@ -448,14 +477,44 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
         </div>
       )}
 
-      {/* TAB 3: ACTION CARDS */}
+      {/* TAB 3: ACTION CARDS & MISSION PILLARS */}
       {activeTab === "action_cards" && (
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
           <h2 className="text-lg font-bold text-white font-display border-b border-slate-800 pb-3">
-            Home Page Quick Action Cards (4 Cards)
+            Home Page Mission Cards & Section Headline
           </h2>
+
+          <div className="space-y-4 bg-slate-950 p-5 rounded-2xl border border-slate-800">
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                Section Main Headline
+              </label>
+              <input
+                type="text"
+                value={actionCardsData.sectionTitle}
+                onChange={(e) =>
+                  setActionCardsData({ ...actionCardsData, sectionTitle: e.target.value })
+                }
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm font-bold text-white focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                Section Subtitle / Overview
+              </label>
+              <textarea
+                rows={2}
+                value={actionCardsData.sectionSubtitle}
+                onChange={(e) =>
+                  setActionCardsData({ ...actionCardsData, sectionSubtitle: e.target.value })
+                }
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 focus:outline-none"
+              />
+            </div>
+          </div>
+
           <div className="space-y-6">
-            {actionCards.map((card: any, idx: number) => (
+            {actionCardsData.cards.map((card: any, idx: number) => (
               <div key={idx} className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3">
                 <h3 className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Card #{idx + 1}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -464,43 +523,48 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                     placeholder="Card Title"
                     value={card.title}
                     onChange={(e) => {
-                      const updated = [...actionCards];
+                      const updated = [...actionCardsData.cards];
                       updated[idx].title = e.target.value;
-                      setActionCards(updated);
+                      setActionCardsData({ ...actionCardsData, cards: updated });
                     }}
                     className="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none"
                   />
                   <input
                     type="text"
-                    placeholder="Button Text"
+                    placeholder="Blue Button Label (e.g. I want to act right now)"
                     value={card.buttonText}
                     onChange={(e) => {
-                      const updated = [...actionCards];
+                      const updated = [...actionCardsData.cards];
                       updated[idx].buttonText = e.target.value;
-                      setActionCards(updated);
+                      setActionCardsData({ ...actionCardsData, cards: updated });
                     }}
                     className="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none"
                   />
                 </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Bullet Items (Separated by commas)
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder="e.g. Family-strengthening programs, Learning communities, Hope groups"
+                    value={card.bullets}
+                    onChange={(e) => {
+                      const updated = [...actionCardsData.cards];
+                      updated[idx].bullets = e.target.value;
+                      setActionCardsData({ ...actionCardsData, cards: updated });
+                    }}
+                    className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-300 focus:outline-none"
+                  />
+                </div>
                 <input
                   type="text"
-                  placeholder="Subtitle Description"
-                  value={card.subtitle}
-                  onChange={(e) => {
-                    const updated = [...actionCards];
-                    updated[idx].subtitle = e.target.value;
-                    setActionCards(updated);
-                  }}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-300 focus:outline-none"
-                />
-                <input
-                  type="text"
-                  placeholder="Destination URL Link"
+                  placeholder="Destination URL Link (e.g. /get-involved)"
                   value={card.link}
                   onChange={(e) => {
-                    const updated = [...actionCards];
+                    const updated = [...actionCardsData.cards];
                     updated[idx].link = e.target.value;
-                    setActionCards(updated);
+                    setActionCardsData({ ...actionCardsData, cards: updated });
                   }}
                   className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-mono text-emerald-400 focus:outline-none"
                 />
@@ -508,9 +572,9 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
                   label={`Upload Card #${idx + 1} Photo from Computer / Drive`}
                   value={card.imageUrl || ""}
                   onChange={(url) => {
-                    const updated = [...actionCards];
+                    const updated = [...actionCardsData.cards];
                     updated[idx].imageUrl = url;
-                    setActionCards(updated);
+                    setActionCardsData({ ...actionCardsData, cards: updated });
                   }}
                 />
               </div>
@@ -519,11 +583,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
           <button
             type="button"
             disabled={isSaving}
-            onClick={() => handleSave("action_cards", actionCards)}
+            onClick={() => handleSave("action_cards", actionCardsData)}
             className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-md transition-all flex items-center gap-2"
           >
             <Save className="w-4 h-4" />
-            <span>Save Quick Action Cards</span>
+            <span>Save Mission Cards & Section Content</span>
           </button>
         </div>
       )}
