@@ -27,8 +27,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "About", href: "/about" },
-    { name: "Stories", href: "/impact" },
+    { name: "Stories", href: "/stories" },
     { name: "Take action", href: "/get-involved" },
+    { name: "Events", href: "/events" },
     { name: "Our Work", href: "/our-work" },
     { name: "Resources", href: "/transparency" },
     { name: "Contact", href: "/contact" },
