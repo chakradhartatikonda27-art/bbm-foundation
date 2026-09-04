@@ -49,6 +49,11 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-secondary uppercase tracking-wider font-display">Explore</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
+                <Link href="/" className="text-slate-500 hover:text-secondary transition-colors font-medium">
+                  Home
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-slate-500 hover:text-secondary transition-colors font-medium">
                   About BBM Foundation
                 </Link>

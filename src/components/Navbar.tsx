@@ -27,6 +27,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Stories", href: "/stories" },
     { name: "Take action", href: "/get-involved" },
