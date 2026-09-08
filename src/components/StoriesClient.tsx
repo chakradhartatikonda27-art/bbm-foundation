@@ -44,7 +44,7 @@ export default function StoriesClient({ stories }: StoriesClientProps) {
       <section 
         className="relative min-h-[35vh] sm:min-h-[40vh] -mt-20 pt-32 pb-16 flex items-center justify-center text-white bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1920')"
+          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1920')"
         }}
         aria-label="Stories Hero Header"
       >

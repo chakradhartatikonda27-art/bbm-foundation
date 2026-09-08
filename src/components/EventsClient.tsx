@@ -95,7 +95,7 @@ export default function EventsClient() {
       <section 
         className="relative min-h-[35vh] sm:min-h-[40vh] -mt-20 pt-32 pb-16 flex items-center justify-center text-white bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1920')"
+          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920')"
         }}
         aria-label="Events Hero Header"
       >

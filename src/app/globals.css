@@ -19,13 +19,37 @@
   --color-border-gray: #e5e7eb;
 }
 
-/* Base resets & layout settings */
-html,
+/* Base resets & layout settings for Mobile & Desktop */
+html {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  /* Safe area inset support for modern iOS iPhones & Android gesture bars */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Touch manipulation optimization */
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* iOS momentum scrolling */
+.overflow-y-auto,
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Premium Typography System */
@@ -34,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;
+  overflow-wrap: break-word;
 }
 
 /* Accessibility Focus States - WCAG AA Standards */
@@ -81,8 +106,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Custom premium scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -111,3 +136,4 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
   white-space: nowrap;
 }
+

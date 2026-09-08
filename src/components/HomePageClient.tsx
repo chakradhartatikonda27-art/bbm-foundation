@@ -52,27 +52,27 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
   const heroTitle = heroData?.title || "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS";
   const heroHighlight = heroData?.highlight || "VITAL";
   const heroSubtitle = heroData?.subtitle || "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.";
-  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920";
+  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1920";
   const heroPrimaryCtaText = heroData?.primaryCtaText || "I Want To Support Now";
   const heroPrimaryCtaLink = heroData?.primaryCtaLink || "/donate";
   const heroSecondaryCtaText = heroData?.secondaryCtaText || "Explore Services";
   const heroSecondaryCtaLink = heroData?.secondaryCtaLink || "#understanding-cause";
 
   const cardsData = siteContent?.action_cards || [
-    { title: "Helping Orphans Through Action", subtitle: "Learn more about our family-strengthening programs & learning communities.", buttonText: "I want to act right now", link: "/get-involved" },
+    { title: "Helping Orphans & Tribal Children", subtitle: "Learn more about our family-strengthening programs & learning communities.", buttonText: "I want to act right now", link: "/get-involved" },
     { title: "Making A Measurable Difference", subtitle: "Learn more about how we study data & measure our success.", buttonText: "I want to learn more", link: "/impact" },
     { title: "Resources To Create Change", subtitle: "Explore the BBM Roadmap, parenting guides & video library.", buttonText: "I want to read more", link: "/our-work" },
   ];
 
   const missionData = siteContent?.mission_vision;
   const missionBadge = missionData?.badge || "Our Mission & Vision";
-  const missionHeading = missionData?.heading || "Building Stronger Families & Empowering Communities";
-  const missionParagraph1 = missionData?.paragraph1 || "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access.";
-  const missionParagraph2 = missionData?.paragraph2 || "We believe that every child deserves a loving family, quality education, and the opportunity to build a dignified future.";
-  const missionImageUrl = missionData?.imageUrl || "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200";
+  const missionHeading = missionData?.heading || "Building Stronger Families & Empowering Rural Communities";
+  const missionParagraph1 = missionData?.paragraph1 || "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access across Andhra Pradesh.";
+  const missionParagraph2 = missionData?.paragraph2 || "We believe that every child in rural & tribal belts deserves a loving family, quality education, and the opportunity to build a dignified future.";
+  const missionImageUrl = missionData?.imageUrl || "https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?q=80&w=1200";
 
   const calloutData = siteContent?.callout;
-  const calloutQuote = calloutData?.quote || "When we empower a single child with love and education, we transform generations. BBM Foundation stands as a bridge of hope for every family.";
+  const calloutQuote = calloutData?.quote || "When we empower a single child with love and education, we transform generations. BBM Foundation stands as a bridge of hope for every family in South India.";
   const calloutAuthor = calloutData?.authorName || "Dr. B. Giribabu";
   const calloutRole = calloutData?.authorRole || "President & Managing Trustee";
   const calloutBgImage = calloutData?.bgImage || "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600";
@@ -81,32 +81,32 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
     {
       title: "Education & School Kits Support",
       category: "Prerna Initiative",
-      img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800",
     },
     {
-      title: "Refresh Camps & Outdoor Recreation",
+      title: "Rural Health & Children Outdoor Camp",
       category: "Child Wellbeing",
-      img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=800",
     },
     {
-      title: "Family Reunification & Foster Care",
+      title: "Family Preservation & Foster Care",
       category: "Family Preservation",
-      img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?q=80&w=800",
     },
     {
-      title: "Girl Child Safety Workshops",
+      title: "Girl Child Safety & Self-Help Workshops",
       category: "Suraksha Program",
-      img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=800",
     },
     {
-      title: "Youth Leadership Mentorship",
+      title: "Tribal Youth Leadership Mentorship",
       category: "Swashakti Program",
-      img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
     },
     {
-      title: "Clean School Infrastructure",
+      title: "Village School Renovation",
       category: "Ahlada Initiative",
-      img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800",
+      img: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800",
     },
   ];
 
@@ -189,25 +189,25 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
 
               const defaultCards = [
                 {
-                  title: "Helping Orphans Through Action",
-                  bullets: ["Family-strengthening programs", "Learning communities", "Hope groups", "Educational initiatives"],
+                  title: "Helping Orphans & Tribal Children",
+                  bullets: ["Family-strengthening programs", "Rural learning centers", "Hope groups", "Educational kit distribution"],
                   buttonText: "I want to act right now",
                   link: "/get-involved",
-                  imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=800",
                 },
                 {
                   title: "Making A Measurable Difference",
-                  bullets: ["How we study data & predict our impact", "How we gather statistics", "How we measure our success"],
+                  bullets: ["Village impact metrics", "Education retention data", "Health screening statistics", "Self-help group growth"],
                   buttonText: "I want to learn more",
                   link: "/impact",
-                  imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800",
                 },
                 {
                   title: "Resources To Create Change",
-                  bullets: ["The BBM Roadmap", "Parenting & Care Tips", "Advocacy Resources", "Our vast library of videos & guides"],
+                  bullets: ["The BBM Roadmap", "Rural Parenting Tips", "Tribal Welfare Guides", "Educational videos"],
                   buttonText: "I want to read more",
                   link: "/our-work",
-                  imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=800",
                 },
               ];
 
@@ -311,16 +311,16 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
                 
                 <div className="absolute top-0 right-0 w-44 h-36 rounded-2xl overflow-hidden shadow-md border-2 border-white z-10 transform -rotate-3 hover:rotate-0 transition-transform">
                   <img
-                    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=600"
-                    alt="Family silhouette at sunset"
+                    src="https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=600"
+                    alt="Indian rural school children studying"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
                 <div className="absolute bottom-2 left-4 w-44 h-36 rounded-2xl overflow-hidden shadow-lg border-2 border-white z-20 transform rotate-3 hover:rotate-0 transition-transform">
                   <img
-                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600"
-                    alt="Happy smiling family"
+                    src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?q=80&w=600"
+                    alt="Indian mother and child in village"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -344,8 +344,8 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
 
                   <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
                     <img
-                      src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600"
-                      alt="Hands together supporting each other"
+                      src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=600"
+                      alt="Rural women self help group in South India"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -380,8 +380,8 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
 
                   <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
                     <img
-                      src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600"
-                      alt="Local community leaders collaborating"
+                      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600"
+                      alt="Indian village youth and community leaders"
                       className="w-full h-full object-cover"
                     />
                   </div>

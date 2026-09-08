@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, Heart } from "lucide-react";
+import { X, Heart, ChevronDown } from "lucide-react";
 
 interface NavLink {
   name: string;
@@ -20,6 +20,16 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: MobileMenuProps) {
   const pathname = usePathname();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+
+  const resourceDropdownItems = [
+    { name: "BBM Roadmap", href: "/resources/roadmap" },
+    { name: "Videos", href: "/resources/videos" },
+    { name: "For Communities & Churches", href: "/resources/community" },
+    { name: "Child Protection Day", href: "/resources/protection-day" },
+    { name: "Hope Groups", href: "/resources/hope-groups" },
+    { name: "e-Learning", href: "/resources/e-learning" },
+  ];
 
   // Close on Escape key press
   useEffect(() => {
@@ -51,7 +61,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: 
       />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white px-6 py-6 shadow-2xl flex flex-col justify-between transition-transform duration-300">
+      <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white px-6 py-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 overflow-y-auto">
         <div>
           {/* Header */}
           <div className="flex items-center justify-between">
@@ -67,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: 
               type="button"
               ref={closeButtonRef}
               onClick={onClose}
-              className="rounded-md p-2 text-slate-700 hover:text-emerald-700 focus:outline-none"
+              className="rounded-lg p-2.5 text-slate-700 hover:text-emerald-700 focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
               aria-label="Close menu"
             >
               <X className="h-6 w-6" aria-hidden="true" />
@@ -77,36 +87,70 @@ export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: 
           {/* Links */}
           <nav className="mt-8 flow-root" aria-label="Mobile Navigation">
             <div className="my-2 divide-y divide-gray-100">
-              <div className="space-y-2 py-4">
+              <div className="space-y-1.5 py-4">
                 {navLinks.map((link) => {
-                  const isActive = pathname.startsWith(link.href);
+                  const isActive = pathname.startsWith(link.href) && link.href !== "/";
+                  const isExactHome = pathname === "/" && link.href === "/";
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
                       onClick={onClose}
-                      className={`block rounded-lg px-3 py-3 text-base font-semibold leading-7 transition-colors hover:bg-emerald-50 hover:text-emerald-800 ${
-                        isActive ? "text-emerald-800 bg-emerald-50 font-bold" : "text-slate-700"
+                      className={`block rounded-xl px-4 py-3 text-base font-semibold leading-7 transition-colors min-h-[44px] touch-manipulation ${
+                        isActive || isExactHome ? "text-emerald-800 bg-emerald-50 font-bold" : "text-slate-700 hover:bg-slate-50"
                       }`}
                     >
                       {link.name}
                     </Link>
                   );
                 })}
+
+                {/* Resources Accordion */}
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 transition-colors min-h-[44px] touch-manipulation"
+                  >
+                    <span>Resources</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform ${isResourcesOpen ? "rotate-180 text-emerald-700" : "text-slate-400"}`} />
+                  </button>
+
+                  {isResourcesOpen && (
+                    <div className="mt-1 pl-4 space-y-1 border-l-2 border-emerald-500/30 ml-4">
+                      {resourceDropdownItems.map((item) => {
+                        const isSubActive = pathname === item.href;
+                        return (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={onClose}
+                            className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                              isSubActive ? "text-emerald-800 bg-emerald-50 font-bold" : "text-slate-600 hover:text-slate-900"
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
               </div>
             </div>
           </nav>
         </div>
 
         {/* CTA in Mobile Menu */}
-        <div className="border-t border-slate-200 pt-6 space-y-3">
+        <div className="border-t border-slate-200 pt-6 space-y-3 mt-6">
           <button
             type="button"
             onClick={() => {
               if (onOpenDonate) onOpenDonate();
               else onClose();
             }}
-            className="flex w-full items-center justify-center rounded-full bg-emerald-600 px-4 py-3.5 text-base font-black text-white shadow-md hover:bg-emerald-700 transition-all"
+            className="flex w-full items-center justify-center rounded-full bg-emerald-600 px-4 py-3.5 text-base font-black text-white shadow-md hover:bg-emerald-700 transition-all min-h-[48px] touch-manipulation"
           >
             <Heart className="w-5 h-5 mr-2 fill-current text-white" />
             Donate Now
@@ -116,4 +160,5 @@ export default function MobileMenu({ isOpen, onClose, onOpenDonate, navLinks }: 
     </div>
   );
 }
+
 

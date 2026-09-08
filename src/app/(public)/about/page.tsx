@@ -39,7 +39,7 @@ export default async function AboutPage() {
       <section 
         className="relative py-20 flex items-center justify-center text-white bg-cover bg-center -mt-20 pt-36"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(17, 66, 39, 0.5), rgba(17, 66, 39, 0.85)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1920')"
+          backgroundImage: "linear-gradient(to bottom, rgba(17, 66, 39, 0.5), rgba(17, 66, 39, 0.85)), url('https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1920')"
         }}
         aria-label="About Page Header"
       >
@@ -84,8 +84,8 @@ export default async function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-2 bg-slate-900 aspect-[4/3]">
               <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800"
-                alt="Teacher leading a class in adopted school room"
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800"
+                alt="Teacher leading a class in adopted school room in Andhra Pradesh"
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>

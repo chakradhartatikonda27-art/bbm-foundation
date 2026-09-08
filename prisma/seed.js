@@ -22,50 +22,50 @@ const siteContentData = [
       tagline: "Building Lives • Creating Opportunities • Serving Humanity",
       phone: "+91 8500863000 / +91 9885126368",
       email: "bbmindiafoundation@gmail.com",
-      address: "BBM Foundation, Plot No. 42, Green Avenue, Narsipatnam, Visakhapatnam Dist - 531116, Andhra Pradesh",
+      address: "Door No. 3-150, Main Street, Bypureddy Palem, Narsipatnam, Anakapalli Dist. - 531116, Andhra Pradesh",
       registrationNo: "551/401/2026/AP-NSP"
     })
   },
   {
     key: "hero",
     content: JSON.stringify({
-      badge: "Instant & Direct Impact",
+      badge: "Direct Impact in Andhra Pradesh",
       title: "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS",
       highlight: "VITAL",
-      subtitle: "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.",
+      subtitle: "Empowering children, tribal communities, and poor families across Narsipatnam, Araku Valley, and South India to grow up in strong families with dignity.",
       primaryCtaText: "Donate Now",
       primaryCtaLink: "/donate",
       secondaryCtaText: "Explore Our Work",
       secondaryCtaLink: "/our-work",
-      backgroundImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920"
+      backgroundImage: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1920"
     })
   },
   {
     key: "action_cards",
     content: JSON.stringify({
       sectionTitle: "Understanding Our Child & Family Mission",
-      sectionSubtitle: "How we build a future where every child has a strong family & life opportunities",
+      sectionSubtitle: "How we build a future where every child in Andhra Pradesh & South India has a strong family & life opportunities",
       cards: [
         {
-          title: "Helping Orphans Through Action",
-          bullets: "Family-strengthening programs, Learning communities, Hope groups, Educational initiatives",
+          title: "Helping Orphans & Tribal Children",
+          bullets: "Family-strengthening programs, Rural learning centers, Hope groups, Educational kit distribution",
           buttonText: "I want to act right now",
           link: "/get-involved",
-          imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800"
+          imageUrl: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=800"
         },
         {
           title: "Making A Measurable Difference",
-          bullets: "How we study data & predict our impact, How we gather statistics, How we measure our success",
+          bullets: "Village impact metrics, Education retention data, Health screening statistics, Self-help group growth",
           buttonText: "I want to learn more",
           link: "/impact",
-          imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800"
+          imageUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800"
         },
         {
           title: "Resources To Create Change",
-          bullets: "The BBM Roadmap, Parenting & Care Tips, Advocacy Resources, Our vast library of videos & guides",
+          bullets: "The BBM Roadmap, Rural Parenting Tips, Tribal Welfare Guides, Educational videos",
           buttonText: "I want to read more",
           link: "/our-work",
-          imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800"
+          imageUrl: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=800"
         }
       ]
     })
@@ -74,25 +74,25 @@ const siteContentData = [
     key: "mission_vision",
     content: JSON.stringify({
       badge: "Our Mission & Vision",
-      heading: "Building Stronger Families & Empowering Communities",
-      paragraph1: "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access.",
-      paragraph2: "We believe that every child deserves a loving family, quality education, and the opportunity to build a dignified future.",
-      imageUrl: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200",
+      heading: "Building Stronger Families & Empowering Rural Communities",
+      paragraph1: "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access in Andhra Pradesh and Telangana.",
+      paragraph2: "We believe that every child in rural and tribal belts deserves a loving family, quality education, and the opportunity to build a dignified future.",
+      imageUrl: "https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?q=80&w=1200",
       pillar1Title: "Family Strengthening",
-      pillar1Desc: "Preventing child abandonment through family preservation programs.",
+      pillar1Desc: "Preventing child abandonment through rural family preservation initiatives.",
       pillar2Title: "Education & Skills",
-      pillar2Desc: "Providing quality learning materials and youth vocational training.",
+      pillar2Desc: "Providing quality learning materials and youth trade workshops in village centers.",
       pillar3Title: "Child Protection",
-      pillar3Desc: "Advocating for safe foster care and family-based solutions.",
+      pillar3Desc: "Advocating for safe foster care and family-based community support.",
       pillar4Title: "Community Leadership",
-      pillar4Desc: "Equipping local leaders and churches to support vulnerable children."
+      pillar4Desc: "Equipping local leaders and self-help groups to support vulnerable children."
     })
   },
   {
     key: "callout",
     content: JSON.stringify({
       title: "Join Hands With BBM Foundation Today",
-      subtitle: "Together, we can ensure every child grows up in a safe, loving family environment with equal opportunities to thrive.",
+      subtitle: "Together, we can ensure every child in South India grows up in a safe, loving family environment with equal opportunities to thrive.",
       ctaText: "Get Involved Now",
       ctaLink: "/get-involved",
       bgImage: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600"
@@ -116,11 +116,16 @@ const siteContentData = [
     key: "about_page",
     content: JSON.stringify({
       title: "About BBM Foundation",
-      subtitle: "Dedicated to orphan care, family preservation, youth empowerment, and community development across India.",
-      story: "Founded with a vision to eliminate orphanhood and family crisis, BBM Foundation works tirelessly across South India to strengthen families, mentor youth, and provide holistic care.",
-      mission: "To ensure every child grows up in a safe, loving family and receives equal opportunities for education, health, and personal growth.",
-      vision: "A world without orphans, where strong families nurture confident, educated, and resilient future leaders.",
-      coreValues: "Integrity, Servant Leadership, Compassion, Transparency, and Community Empowerment."
+      subtitle: "Dedicated to orphan care, family preservation, youth empowerment, and community development across Andhra Pradesh & Telangana.",
+      story: "Founded with a vision to eliminate orphanhood and family crisis in South India, BBM Foundation works tirelessly across Narsipatnam, Anakapalli, Araku Valley, and regional villages to strengthen families, mentor youth, and provide holistic care.",
+      mission: "To enable every child in rural & tribal communities to thrive within a loving family and access life-changing opportunities for education and growth.",
+      vision: "A compassionate society where zero children are left orphaned or without quality education and protection across Andhra Pradesh.",
+      value1Title: "Compassion First",
+      value1Desc: "Serving every individual with dignity and unconditional care.",
+      value2Title: "Transparency",
+      value2Desc: "100% financial and operational accountability in every project.",
+      value3Title: "Community Impact",
+      value3Desc: "Sustainable programs designed for long-term rural community transformation."
     })
   },
   {
@@ -193,9 +198,7 @@ const siteContentData = [
 ];
 
 async function main() {
-  console.log("Seeding real foundation stories & data...");
-
-  // Clean existing records
+  console.log("Cleaning existing records...");
   await prisma.user.deleteMany({});
   await prisma.program.deleteMany({});
   await prisma.story.deleteMany({});
@@ -204,6 +207,7 @@ async function main() {
   await prisma.document.deleteMany({});
   await prisma.donation.deleteMany({});
   await prisma.contactMessage.deleteMany({});
+  await prisma.galleryImage.deleteMany({});
 
   // Create Admin User
   const adminPassword = hashPassword("AdminPassword123!");
@@ -215,6 +219,28 @@ async function main() {
     },
   });
   console.log("Created Admin User:", superAdmin.email);
+
+  // Create Team Members / Trustees
+  const trustees = [
+    {
+      name: "Dr. B. Giribabu",
+      role: "President & Managing Trustee",
+      bio: "Visionary founder committed to social transformation, orphan care, and tribal community empowerment across Andhra Pradesh.",
+      order: 1,
+      imageUrl: "https://images.unsplash.com/photo-1610056494052-6a4f83a17686?q=80&w=400",
+    },
+    {
+      name: "K. Satyanarayana",
+      role: "Vice President & Executive Trustee",
+      bio: "Oversees field coordination, rural school kit distribution, and government school partnerships in Anakapalli district.",
+      order: 2,
+      imageUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400",
+    },
+  ];
+
+  for (const t of trustees) {
+    await prisma.teamMember.create({ data: t });
+  }
 
   // Seed Site Content
   for (const item of siteContentData) {
@@ -229,26 +255,26 @@ async function main() {
   // Create Programs
   const programs = [
     {
-      title: "Suraksha Safety & Family Care",
+      title: "Suraksha Safety & Tribal Family Care",
       category: "COMMUNITY",
-      description: "Empowering children with family-strengthening programs, structural safety workshops, and local awareness campaigns.",
-      imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
+      description: "Empowering children in Narsipatnam & Araku Valley with family-strengthening programs, safety workshops, and local awareness campaigns.",
+      imageUrl: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=800",
       status: "ACTIVE",
       verified: true,
     },
     {
-      title: "Swashakti Leadership Development",
+      title: "Swashakti Youth Leadership Mentorship",
       category: "YOUTH",
-      description: "Fostering self-strength, career guidance, and leadership mentorship to mold youth into confident future community leaders.",
-      imageUrl: "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=800",
+      description: "Fostering self-strength, vocational skills, and leadership mentorship for rural youth across Andhra Pradesh & Telangana.",
+      imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
       status: "ACTIVE",
       verified: true,
     },
     {
       title: "Prerna Quality Education Support",
       category: "EDUCATION",
-      description: "Promoting higher school retention rates by distributing learning kits, academic scholarships, and parent-teacher counseling.",
-      imageUrl: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800",
+      description: "Promoting higher school retention rates in village schools by distributing study kits, scholarships, and digital learning tools.",
+      imageUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800",
       status: "ACTIVE",
       verified: true,
     },
@@ -261,44 +287,34 @@ async function main() {
   // Create Stories of Change
   const stories = [
     {
-      title: "Refresh Camps 2026 — The Stories That Marked Our Summer",
-      author: "ARFO Romania & BBM Regional Team",
-      challenge: "Abandonment and exhaustion faced by foster parents, adoptive families, and vulnerable children across community care networks.",
-      intervention: "The Refresh Camps brought together open hearts, volunteers, professional foster parents, and foster families for a week where abandonment met resilience and exhaustion met rest.",
-      outcome: "What remained afterward wasn't just memories, but living relationships and ongoing community support networks that continue even now.",
-      quote: "Encouraging news from ARFO Romania! These are stories not easily forgotten. Refresh Camps brought together open hearts and foster families for a week of rest and resilience.",
-      imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800",
+      title: "Narsipatnam Tribal Youth Mentorship Drive 2026",
+      author: "BBM Foundation Field Coordination Team",
+      challenge: "High dropout rates and lack of career guidance among tribal youth in the rural hamlets surrounding Narsipatnam and Araku.",
+      intervention: "BBM Foundation launched the Swashakti Leadership workshops, providing vocational skill training, digital literacy, and personal counseling.",
+      outcome: "Over 250 youth completed the certification program, with 40+ securing apprenticeships and technical jobs.",
+      quote: "BBM Foundation gave our tribal youth a vision for the future and the practical skills to achieve financial independence.",
+      imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
       publishedAt: new Date("2026-09-01"),
     },
     {
-      title: "From Overwhelming Need to the Hope of Family in Uganda",
-      author: "Uganda Care & Reunification Team",
-      challenge: "One young caregiver in Uganda was carrying the overwhelming responsibility of caring for 160 children single-handedly without structural aid.",
-      intervention: "Through collaboration, family reunification, foster care systems, and community support, pathways of belonging were established.",
-      outcome: "Today, more children are growing up with families, while the caregiver and local community continue building pathways of hope and belonging.",
-      quote: "In Uganda, one young caregiver was carrying the overwhelming responsibility of 160 children. Collaboration and foster care brought true family reunification.",
-      imageUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800",
+      title: "Lakshmi's Self-Help Group & Family Preservation in Anakapalli",
+      author: "Women & Family Care Cell",
+      challenge: "Lakshmi, a widowed mother of three in Anakapalli district, was struggling to feed her children and keep them in school.",
+      intervention: "Through the BBM Foundation family preservation initiative, Lakshmi received micro-enterprise seed aid for tailoring and joined a women's self-help group.",
+      outcome: "Her monthly income tripled, enabling all three of her children to stay in school and continue their education uninterrupted.",
+      quote: "The foundation didn't just give us financial assistance—they restored our family's hope and self-reliance.",
+      imageUrl: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=800",
       publishedAt: new Date("2026-08-17"),
     },
     {
-      title: "WWO Community Gathering 2026: Global Connections, Local Action",
-      author: "Global Leadership & Advocacy Council",
-      challenge: "Connecting grassroots changemakers and leaders across nations to coordinate systemic solutions for orphaned children.",
-      intervention: "On July 17, WWO Community Gathering 2026 brought together more than 500 people across 58 countries for a shared moment of vision, prayer, learning, and local reflection.",
-      outcome: "Under the theme Global Connections, Local Action, leaders explored practical next steps ensuring every child grows up in a safe, loving family and community.",
-      quote: "Under the theme Global Connections, Local Action, 500 participants across 58 countries explored how vision becomes real when communities act together.",
-      imageUrl: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800",
+      title: "School Supply & Education Kit Distribution Across Araku Valley",
+      author: "Prerna Education Drive",
+      challenge: "Over 500 children in remote tribal hamlets lacked basic textbooks, notebooks, bags, and writing materials for school.",
+      intervention: "BBM Foundation distributed comprehensive Prerna Education Kits and established 5 community evening study hubs.",
+      outcome: "School attendance in the adopted village schools jumped to 95%, with zero student dropouts reported during the academic year.",
+      quote: "Seeing the bright smiles of our tribal children receiving their school kits inspires us to reach every village in Andhra Pradesh.",
+      imageUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800",
       publishedAt: new Date("2026-07-31"),
-    },
-    {
-      title: "Geeta's Pathway to Educational Excellence & Opportunity",
-      author: "BBM Foundation Coordinator",
-      challenge: "Geeta belonged to an agricultural family in Shamshabad facing financial hardship that threatened to halt her higher education.",
-      intervention: "BBM Foundation stepped in through the Prerna initiative, providing full tuition scholarships and academic counseling.",
-      outcome: "Geeta completed her degree in computer applications and secured a position as a junior software assistant.",
-      quote: "The foundation lifted the financial burden from my parents, giving me the wings to fly and achieve my dreams.",
-      imageUrl: "https://images.unsplash.com/photo-1534751516642-a131ffd103fd?q=80&w=800",
-      publishedAt: new Date("2026-06-15"),
     },
     {
       title: "Anjali's School Renovation Breakthrough in Bhongir",
@@ -307,7 +323,7 @@ async function main() {
       intervention: "BBM Foundation renovated the school, constructed clean toilets, and equipped classrooms with libraries and play areas.",
       outcome: "School attendance surged by 40%. Anjali became school library coordinator and topped her class.",
       quote: "Now we feel proud to come to school every day. The library has opened a whole new world of stories for us.",
-      imageUrl: "https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=800",
+      imageUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800",
       publishedAt: new Date("2026-05-20"),
     },
   ];
