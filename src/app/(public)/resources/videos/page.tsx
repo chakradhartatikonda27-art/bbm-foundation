@@ -21,12 +21,21 @@ export default async function VideosPage() {
   ];
 
   const videoList = dbResources.length > 0
-    ? dbResources.map((r) => ({
-        title: r.title,
-        duration: r.format || "Video",
-        img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600",
-        linkUrl: r.linkUrl || "#",
-      }))
+    ? dbResources.map((r, idx) => {
+        const isUrl = r.description?.startsWith("http://") || r.description?.startsWith("https://") || r.description?.startsWith("/uploads/");
+        const defaultImgs = [
+          "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600",
+          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
+          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600"
+        ];
+        return {
+          title: r.title,
+          duration: r.format || "Video",
+          img: isUrl ? r.description : defaultImgs[idx % defaultImgs.length],
+          linkUrl: r.linkUrl || "#",
+          description: !isUrl ? r.description : "",
+        };
+      })
     : defaultVideos;
 
   return (
