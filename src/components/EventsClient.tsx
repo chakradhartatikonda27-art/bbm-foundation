@@ -11,7 +11,11 @@ interface Speaker {
   imageUrl: string;
 }
 
-export default function EventsClient() {
+interface EventsClientProps {
+  siteContent?: any;
+}
+
+export default function EventsClient({ siteContent }: EventsClientProps) {
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [registerSuccess, setRegisterSuccess] = useState(false);
@@ -19,48 +23,24 @@ export default function EventsClient() {
   const [regEmail, setRegEmail] = useState("");
   const [regRole, setRegRole] = useState("Local Leader");
 
-  const speakers: Speaker[] = [
-    {
-      name: "Karmen Friesen",
-      role: "WWO Principal Coordinator",
-      imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400",
-    },
-    {
-      name: "Faby Ruesga",
-      role: "Regional Ambassador, East Asia",
-      imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
-    },
-    {
-      name: "Praveen Gomez",
-      role: "Implementation Lead",
-      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
-    },
-    {
-      name: "Shamindra Fernando",
-      role: "Coordinator, Sri Lanka Without Orphans & South Asia",
-      imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
-    },
-    {
-      name: "Malla Reddy",
-      role: "BBM Foundation Chairman & Managing Trustee",
-      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
-    },
-    {
-      name: "MV Prasad",
-      role: "Trustee - Governance & Community Outreach",
-      imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
-    },
-    {
-      name: "Dr. Rachel Stevens",
-      role: "Child Protection & Foster Care Specialist",
-      imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400",
-    },
-    {
-      name: "Elena Popa",
-      role: "Regional Coordinator, Eastern Europe Camps",
-      imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400",
-    },
+  const speakersData = siteContent?.events_speakers;
+  const speakersSectionTitle = speakersData?.sectionTitle || "Participants heard from these people";
+  const speakersSectionSubtitle = speakersData?.sectionSubtitle || "Global and regional leaders sharing real-world insights, field data, and child protection frameworks.";
+
+  const defaultSpeakers: Speaker[] = [
+    { name: "Dr. B. Giribabu", role: "President & Managing Trustee", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400" },
+    { name: "Malla Reddy", role: "BBM Foundation Chairman & Trustee", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400" },
+    { name: "Praveen Gomez", role: "Implementation & Field Director", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400" },
+    { name: "MV Prasad", role: "Trustee - Governance & Outreach", imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400" },
+    { name: "Karmen Friesen", role: "WWO Principal Coordinator", imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" },
+    { name: "Faby Ruesga", role: "Regional Ambassador, East Asia", imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" },
+    { name: "Dr. Rachel Stevens", role: "Child Protection Specialist", imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400" },
+    { name: "Elena Popa", role: "Regional Coordinator, Child Care Camps", imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400" },
   ];
+
+  const speakers: Speaker[] = Array.isArray(speakersData?.speakers) && speakersData.speakers.length > 0
+    ? speakersData.speakers
+    : defaultSpeakers;
 
   const upcomingEvents = [
     {
@@ -270,10 +250,10 @@ export default function EventsClient() {
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <h2 id="speakers-heading" className="text-3xl sm:text-4xl font-display font-bold text-[#114227]">
-              Participants heard from these people
+              {speakersSectionTitle}
             </h2>
             <p className="text-sm sm:text-base text-slate-600 font-medium">
-              Global and regional leaders sharing real-world insights, field data, and child protection frameworks.
+              {speakersSectionSubtitle}
             </p>
           </div>
 

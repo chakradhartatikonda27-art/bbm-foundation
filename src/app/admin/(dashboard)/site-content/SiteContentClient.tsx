@@ -20,6 +20,8 @@ import {
   Compass,
   BookOpen,
   Heart,
+  Users,
+  Mic,
 } from "lucide-react";
 import ImageUploadInput from "@/components/ImageUploadInput";
 
@@ -302,11 +304,29 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
     card3LinkText: initialContent?.how_you_can_help?.card3LinkText || "Become a Local Leader →"
   });
 
+  const [eventsSpeakers, setEventsSpeakers] = useState({
+    sectionTitle: initialContent?.events_speakers?.sectionTitle || "Participants heard from these people",
+    sectionSubtitle: initialContent?.events_speakers?.sectionSubtitle || "Global and regional leaders sharing real-world insights, field data, and child protection frameworks.",
+    speakers: Array.isArray(initialContent?.events_speakers?.speakers) && initialContent.events_speakers.speakers.length > 0
+      ? initialContent.events_speakers.speakers
+      : [
+          { name: "Dr. B. Giribabu", role: "President & Managing Trustee", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400" },
+          { name: "Malla Reddy", role: "BBM Foundation Chairman & Trustee", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400" },
+          { name: "Praveen Gomez", role: "Implementation & Field Director", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400" },
+          { name: "MV Prasad", role: "Trustee - Governance & Outreach", imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400" },
+          { name: "Karmen Friesen", role: "WWO Principal Coordinator", imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" },
+          { name: "Faby Ruesga", role: "Regional Ambassador, East Asia", imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" },
+          { name: "Dr. Rachel Stevens", role: "Child Protection Specialist", imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400" },
+          { name: "Elena Popa", role: "Regional Coordinator, Child Care Camps", imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400" },
+        ]
+  });
+
   const tabs = [
     { id: "hero", label: "Hero Banner", icon: Sparkles },
     { id: "branding", label: "Branding & Logo", icon: Layout },
     { id: "action_cards", label: "Action Cards", icon: Zap },
     { id: "how_you_can_help", label: "How You Can Help", icon: Heart },
+    { id: "events_speakers", label: "Events & Speakers", icon: Users },
     { id: "mission_vision", label: "Mission & Vision", icon: Compass },
     { id: "callout", label: "Callout Banner", icon: MessageSquareQuote },
     { id: "scanner", label: "Payment & UPI", icon: QrCode },
@@ -811,6 +831,109 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
           >
             <Save className="w-4 h-4" />
             <span>Save How You Can Help Settings</span>
+          </button>
+        </div>
+      )}
+
+      {/* TAB: EVENTS & SPEAKERS */}
+      {activeTab === "events_speakers" && (
+        <div className="bg-slate-900/80 rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div className="border-b border-slate-800 pb-4 flex justify-between items-center">
+            <div>
+              <h2 className="text-xl font-black text-white flex items-center gap-2">
+                <Users className="w-5 h-5 text-emerald-400" />
+                <span>Events Page Speakers & Global Leaders Grid</span>
+              </h2>
+              <p className="text-xs text-slate-400 mt-1">
+                Edit speaker names, roles, titles, and upload portraits for the "Participants heard from these people" section on the Events page.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-300">Section Title</label>
+              <input
+                type="text"
+                value={eventsSpeakers.sectionTitle}
+                onChange={(e) => setEventsSpeakers({ ...eventsSpeakers, sectionTitle: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-300">Section Subtitle</label>
+              <input
+                type="text"
+                value={eventsSpeakers.sectionSubtitle}
+                onChange={(e) => setEventsSpeakers({ ...eventsSpeakers, sectionSubtitle: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+            </div>
+          </div>
+
+          {/* Speakers List */}
+          <div className="space-y-6 pt-2">
+            <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">Speakers & Leadership Portfolios</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {eventsSpeakers.speakers.map((sp: any, idx: number) => (
+                <div key={idx} className="p-4 bg-slate-950/60 rounded-xl border border-slate-800 space-y-4">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <span className="text-xs font-bold text-white uppercase">Speaker #{idx + 1}</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold uppercase text-slate-400">Full Name</label>
+                      <input
+                        type="text"
+                        value={sp.name}
+                        onChange={(e) => {
+                          const updated = [...eventsSpeakers.speakers];
+                          updated[idx].name = e.target.value;
+                          setEventsSpeakers({ ...eventsSpeakers, speakers: updated });
+                        }}
+                        className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold uppercase text-slate-400">Role / Designation</label>
+                      <input
+                        type="text"
+                        value={sp.role}
+                        onChange={(e) => {
+                          const updated = [...eventsSpeakers.speakers];
+                          updated[idx].role = e.target.value;
+                          setEventsSpeakers({ ...eventsSpeakers, speakers: updated });
+                        }}
+                        className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <ImageUploadInput
+                    label={`Upload Speaker #${idx + 1} Portrait Photo`}
+                    value={sp.imageUrl || ""}
+                    onChange={(url) => {
+                      const updated = [...eventsSpeakers.speakers];
+                      updated[idx].imageUrl = url;
+                      setEventsSpeakers({ ...eventsSpeakers, speakers: updated });
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            disabled={isSaving}
+            onClick={() => handleSave("events_speakers", eventsSpeakers)}
+            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-md transition-all flex items-center gap-2"
+          >
+            <Save className="w-4 h-4" />
+            <span>Save Speakers & Section Content</span>
           </button>
         </div>
       )}
