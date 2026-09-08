@@ -193,23 +193,35 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
                   bullets: ["Family-strengthening programs", "Learning communities", "Hope groups", "Educational initiatives"],
                   buttonText: "I want to act right now",
                   link: "/get-involved",
-                  imageUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800",
                 },
                 {
                   title: "Making A Measurable Difference",
                   bullets: ["How we study data & predict our impact", "How we gather statistics", "How we measure our success"],
                   buttonText: "I want to learn more",
                   link: "/impact",
-                  imageUrl: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800",
                 },
                 {
                   title: "Resources To Create Change",
                   bullets: ["The BBM Roadmap", "Parenting & Care Tips", "Advocacy Resources", "Our vast library of videos & guides"],
                   buttonText: "I want to read more",
                   link: "/our-work",
-                  imageUrl: "https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?q=80&w=800",
+                  imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
                 },
               ];
+
+              const isUnrelatedUrl = (url: string) =>
+                !url ||
+                url.includes("photo-1509062522246-3755977927d7") ||
+                url.includes("photo-1551836022-d5d88e9218df") ||
+                url.includes("photo-1497633762265-9d179a990aa6") ||
+                url.includes("photo-1608408891486-ee21896898d9") ||
+                url.includes("photo-1577896851231-70ef18881754") ||
+                url.includes("photo-1603988363607-e1e4a66962c6") ||
+                url.includes("photo-1596464716127-f2a82984de30") ||
+                url.includes("photo-1509099836639-18ba1795216d") ||
+                url.includes("photo-1617634667039-8e4cb277ab46");
 
               const cardList = rawCards && rawCards.length > 0
                 ? rawCards.map((c: any, i: number) => ({
@@ -219,7 +231,7 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
                       : (Array.isArray(c.bullets) ? c.bullets : (c.subtitle ? [c.subtitle] : defaultCards[i % 3].bullets)),
                     buttonText: c.buttonText || defaultCards[i % 3].buttonText,
                     link: c.link || defaultCards[i % 3].link,
-                    imageUrl: c.imageUrl || defaultCards[i % 3].imageUrl,
+                    imageUrl: isUnrelatedUrl(c.imageUrl) ? defaultCards[i % 3].imageUrl : c.imageUrl,
                   }))
                 : defaultCards;
 
