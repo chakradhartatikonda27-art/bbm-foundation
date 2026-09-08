@@ -37,7 +37,7 @@ const siteContentData = [
       primaryCtaLink: "/donate",
       secondaryCtaText: "Explore Our Work",
       secondaryCtaLink: "/our-work",
-      backgroundImage: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1920"
+      backgroundImage: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=1920"
     })
   },
   {
