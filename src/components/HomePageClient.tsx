@@ -284,46 +284,62 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Card 1: Large Featured Donate Card */}
-            <div className="lg:col-span-7 bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 justify-between items-center relative overflow-hidden">
-              <div className="space-y-6 flex-1 z-10">
-                <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center">
-                  <Heart className="w-6 h-6 fill-current" />
+            <div className="lg:col-span-7 bg-gradient-to-br from-blue-50/50 via-white to-slate-50/50 rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+              <div className="space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center shadow-sm">
+                    <Heart className="w-6 h-6 fill-current" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
+                    Direct Impact
+                  </span>
                 </div>
+
+                <div className="relative rounded-2xl overflow-hidden h-48 sm:h-56 border border-slate-100 shadow-inner group">
+                  <img
+                    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1000"
+                    alt="Children supported by BBM Foundation"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4">
+                    <p className="text-white text-xs font-semibold">
+                      ❤️ Supporting 500+ vulnerable & orphaned children this year
+                    </p>
+                  </div>
+                </div>
+
                 <div>
                   <h3 className="text-2xl font-bold font-display text-slate-900 leading-tight">
                     Donate to BBM Foundation Today
                   </h3>
-                  <p className="text-slate-600 text-sm mt-3 leading-relaxed">
-                    Be the one to bring a <span className="text-purple-600 font-extrabold">significant</span> impact to the life of a child that will not be forgotten.
+                  <p className="text-slate-600 text-sm mt-2 leading-relaxed">
+                    Be the one to bring a <span className="text-blue-600 font-bold">significant, lasting impact</span> to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.
                   </p>
                 </div>
+
+                <div className="grid grid-cols-2 gap-3 pt-1">
+                  <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>100% Direct Field Aid</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                    <span>Verified Transparent NGO</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 mt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-xs text-slate-500 font-medium text-center sm:text-left">
+                  Tax deductible under applicable guidelines
+                </span>
                 <button
                   type="button"
                   onClick={() => openDonate("General Donation")}
-                  className="inline-flex items-center justify-center py-3.5 px-8 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-sm shadow-md transition-all scale-105 active:scale-95"
+                  className="w-full sm:w-auto inline-flex items-center justify-center py-3.5 px-8 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-sm shadow-md transition-all active:scale-95 flex-shrink-0"
                 >
                   I want to donate
                 </button>
-              </div>
-
-              <div className="w-full md:w-64 relative flex-shrink-0 h-64 md:h-full min-h-[220px]">
-                <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-[#dcfce7] -z-0"></div>
-                
-                <div className="absolute top-0 right-0 w-44 h-36 rounded-2xl overflow-hidden shadow-md border-2 border-white z-10 transform -rotate-3 hover:rotate-0 transition-transform">
-                  <img
-                    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=600"
-                    alt="Family silhouette at sunset"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="absolute bottom-2 left-4 w-44 h-36 rounded-2xl overflow-hidden shadow-lg border-2 border-white z-20 transform rotate-3 hover:rotate-0 transition-transform">
-                  <img
-                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600"
-                    alt="Happy smiling family"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
               </div>
             </div>
 
