@@ -246,6 +246,11 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
         body: JSON.stringify({ key, payload }),
       });
       const data = await res.json();
+      if (res.status === 401) {
+        alert("Session expired. Please log in again.");
+        window.location.href = "/admin/login";
+        return;
+      }
       if (res.ok && data.success) {
         setSuccessMessage(`Successfully updated ${key.replace("_", " ").toUpperCase()} settings!`);
         setTimeout(() => setSuccessMessage(null), 3500);

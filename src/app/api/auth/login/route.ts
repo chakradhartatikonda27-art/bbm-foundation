@@ -40,8 +40,8 @@ export async function POST(req: Request) {
     cookieStore.set("session", sessionToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 2, // 2 hours session duration
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24, // 24 hours session duration
       path: "/",
     });
 

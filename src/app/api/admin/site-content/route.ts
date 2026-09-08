@@ -31,14 +31,14 @@ export async function GET(request: Request) {
   }
 }
 
-export async function PUT(request: Request) {
+async function handleUpdate(request: Request) {
   try {
     const cookieStore = await cookies();
     const sessionToken = cookieStore.get("session")?.value;
     const session = sessionToken ? decryptSession(sessionToken) : null;
 
     if (!session) {
-      return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired or unauthorized access. Please log in again." }, { status: 401 });
     }
 
     const { key, payload } = await request.json();
@@ -56,7 +56,16 @@ export async function PUT(request: Request) {
     });
 
     return NextResponse.json({ success: true, data: updated });
-  } catch {
-    return NextResponse.json({ error: "Failed to update site content" }, { status: 500 });
+  } catch (err: any) {
+    console.error("Failed to update site content:", err);
+    return NextResponse.json({ error: err?.message || "Failed to update site content" }, { status: 500 });
   }
+}
+
+export async function PUT(request: Request) {
+  return handleUpdate(request);
+}
+
+export async function POST(request: Request) {
+  return handleUpdate(request);
 }
