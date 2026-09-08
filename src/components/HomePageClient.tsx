@@ -52,7 +52,7 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
   const heroTitle = heroData?.title || "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS";
   const heroHighlight = heroData?.highlight || "VITAL";
   const heroSubtitle = heroData?.subtitle || "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.";
-  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=1920";
+  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1920";
   const heroPrimaryCtaText = heroData?.primaryCtaText || "I Want To Support Now";
   const heroPrimaryCtaLink = heroData?.primaryCtaLink || "/donate";
   const heroSecondaryCtaText = heroData?.secondaryCtaText || "Explore Services";
