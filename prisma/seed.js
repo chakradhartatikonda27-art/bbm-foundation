@@ -71,6 +71,31 @@ const siteContentData = [
     })
   },
   {
+    key: "how_you_can_help",
+    content: JSON.stringify({
+      sectionTitle: "How You Can Help Orphaned and Vulnerable Children",
+      sectionSubtitle: "Join hands to make a direct, tangible difference in a child's life today.",
+      card1Title: "Donate to BBM Foundation Today",
+      card1Desc: "Be the one to bring a significant, lasting impact to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.",
+      card1PhotoUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1000",
+      card1Caption: "❤️ Supporting 500+ vulnerable & orphaned children this year",
+      card1Badge1: "100% Direct Field Aid",
+      card1Badge2: "Verified Transparent NGO",
+      card1Notice: "Tax deductible under applicable guidelines",
+      card1ButtonText: "I want to donate",
+      card2Title: "Stand with Children in Prayer & Support",
+      card2Desc: "Unite in purpose. Transform the world. Join our dedicated support & prayer network.",
+      card2Tag: "Prayer & Hope Network",
+      card2PhotoUrl: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600",
+      card2LinkText: "Join Support Network →",
+      card3Title: "Help Children Locally",
+      card3Desc: "Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.",
+      card3Tag: "Local Leadership",
+      card3PhotoUrl: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600",
+      card3LinkText: "Become a Local Leader →"
+    })
+  },
+  {
     key: "mission_vision",
     content: JSON.stringify({
       badge: "Our Mission & Vision",

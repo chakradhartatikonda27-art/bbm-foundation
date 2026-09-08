@@ -19,6 +19,7 @@ import {
   MessageSquareQuote,
   Compass,
   BookOpen,
+  Heart,
 } from "lucide-react";
 import ImageUploadInput from "@/components/ImageUploadInput";
 
@@ -278,10 +279,34 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
     cornerstone4Desc: initialContent?.roadmap_page?.cornerstone4Desc || "Sustaining caregivers and advocates with spiritual renewal, mental health support, and peer hope groups.",
   });
 
+  const [howYouCanHelp, setHowYouCanHelp] = useState({
+    sectionTitle: initialContent?.how_you_can_help?.sectionTitle || "How You Can Help Orphaned and Vulnerable Children",
+    sectionSubtitle: initialContent?.how_you_can_help?.sectionSubtitle || "Join hands to make a direct, tangible difference in a child's life today.",
+    card1Title: initialContent?.how_you_can_help?.card1Title || "Donate to BBM Foundation Today",
+    card1Desc: initialContent?.how_you_can_help?.card1Desc || "Be the one to bring a significant, lasting impact to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.",
+    card1PhotoUrl: initialContent?.how_you_can_help?.card1PhotoUrl || "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1000",
+    card1Caption: initialContent?.how_you_can_help?.card1Caption || "❤️ Supporting 500+ vulnerable & orphaned children this year",
+    card1Badge1: initialContent?.how_you_can_help?.card1Badge1 || "100% Direct Field Aid",
+    card1Badge2: initialContent?.how_you_can_help?.card1Badge2 || "Verified Transparent NGO",
+    card1Notice: initialContent?.how_you_can_help?.card1Notice || "Tax deductible under applicable guidelines",
+    card1ButtonText: initialContent?.how_you_can_help?.card1ButtonText || "I want to donate",
+    card2Title: initialContent?.how_you_can_help?.card2Title || "Stand with Children in Prayer & Support",
+    card2Desc: initialContent?.how_you_can_help?.card2Desc || "Unite in purpose. Transform the world. Join our dedicated support & prayer network.",
+    card2Tag: initialContent?.how_you_can_help?.card2Tag || "Prayer & Hope Network",
+    card2PhotoUrl: initialContent?.how_you_can_help?.card2PhotoUrl || "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600",
+    card2LinkText: initialContent?.how_you_can_help?.card2LinkText || "Join Support Network →",
+    card3Title: initialContent?.how_you_can_help?.card3Title || "Help Children Locally",
+    card3Desc: initialContent?.how_you_can_help?.card3Desc || "Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.",
+    card3Tag: initialContent?.how_you_can_help?.card3Tag || "Local Leadership",
+    card3PhotoUrl: initialContent?.how_you_can_help?.card3PhotoUrl || "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600",
+    card3LinkText: initialContent?.how_you_can_help?.card3LinkText || "Become a Local Leader →"
+  });
+
   const tabs = [
     { id: "hero", label: "Hero Banner", icon: Sparkles },
     { id: "branding", label: "Branding & Logo", icon: Layout },
     { id: "action_cards", label: "Action Cards", icon: Zap },
+    { id: "how_you_can_help", label: "How You Can Help", icon: Heart },
     { id: "mission_vision", label: "Mission & Vision", icon: Compass },
     { id: "callout", label: "Callout Banner", icon: MessageSquareQuote },
     { id: "scanner", label: "Payment & UPI", icon: QrCode },
@@ -593,6 +618,199 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
           >
             <Save className="w-4 h-4" />
             <span>Save Mission Cards & Section Content</span>
+          </button>
+        </div>
+      )}
+
+      {/* TAB: HOW YOU CAN HELP */}
+      {activeTab === "how_you_can_help" && (
+        <div className="bg-slate-900/80 rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div className="border-b border-slate-800 pb-4">
+            <h2 className="text-xl font-black text-white flex items-center gap-2">
+              <Heart className="w-5 h-5 text-emerald-400" />
+              <span>How You Can Help Section (Featured Cards & Photos)</span>
+            </h2>
+            <p className="text-xs text-slate-400 mt-1">
+              Edit section titles, text descriptions, badges, and upload photos for all 3 cards in the "How You Can Help" homepage section.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-300">Section Title</label>
+              <input
+                type="text"
+                value={howYouCanHelp.sectionTitle}
+                onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, sectionTitle: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-300">Section Subtitle</label>
+              <input
+                type="text"
+                value={howYouCanHelp.sectionSubtitle}
+                onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, sectionSubtitle: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+            </div>
+          </div>
+
+          {/* Card 1 Settings */}
+          <div className="p-5 bg-slate-950/60 rounded-xl border border-slate-800 space-y-4">
+            <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">Card #1: Large Featured Donate Card</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Card Title</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card1Title}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Button Text</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card1ButtonText}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1ButtonText: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-300">Card Description</label>
+              <textarea
+                rows={2}
+                value={howYouCanHelp.card1Desc}
+                onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1Desc: e.target.value })}
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+              ></textarea>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Badge 1 Text</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card1Badge1}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1Badge1: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Badge 2 Text</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card1Badge2}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1Badge2: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Image Overlay Caption</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card1Caption}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card1Caption: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+            </div>
+            <ImageUploadInput
+              label="Upload Featured Card #1 Photo from Computer / Drive"
+              value={howYouCanHelp.card1PhotoUrl || ""}
+              onChange={(url) => setHowYouCanHelp({ ...howYouCanHelp, card1PhotoUrl: url })}
+            />
+          </div>
+
+          {/* Card 2 Settings */}
+          <div className="p-5 bg-slate-950/60 rounded-xl border border-slate-800 space-y-4">
+            <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">Card #2: Stand with Children Card</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Card Title</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card2Title}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card2Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Tag Text</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card2Tag}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card2Tag: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-300">Card Description</label>
+              <input
+                type="text"
+                value={howYouCanHelp.card2Desc}
+                onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card2Desc: e.target.value })}
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+              />
+            </div>
+            <ImageUploadInput
+              label="Upload Card #2 Photo from Computer / Drive"
+              value={howYouCanHelp.card2PhotoUrl || ""}
+              onChange={(url) => setHowYouCanHelp({ ...howYouCanHelp, card2PhotoUrl: url })}
+            />
+          </div>
+
+          {/* Card 3 Settings */}
+          <div className="p-5 bg-slate-950/60 rounded-xl border border-slate-800 space-y-4">
+            <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">Card #3: Help Children Locally Card</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Card Title</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card3Title}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card3Title: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300">Tag Text</label>
+                <input
+                  type="text"
+                  value={howYouCanHelp.card3Tag}
+                  onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card3Tag: e.target.value })}
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-300">Card Description</label>
+              <input
+                type="text"
+                value={howYouCanHelp.card3Desc}
+                onChange={(e) => setHowYouCanHelp({ ...howYouCanHelp, card3Desc: e.target.value })}
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
+              />
+            </div>
+            <ImageUploadInput
+              label="Upload Card #3 Photo from Computer / Drive"
+              value={howYouCanHelp.card3PhotoUrl || ""}
+              onChange={(url) => setHowYouCanHelp({ ...howYouCanHelp, card3PhotoUrl: url })}
+            />
+          </div>
+
+          <button
+            type="button"
+            disabled={isSaving}
+            onClick={() => handleSave("how_you_can_help", howYouCanHelp)}
+            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-md transition-all flex items-center gap-2"
+          >
+            <Save className="w-4 h-4" />
+            <span>Save How You Can Help Settings</span>
           </button>
         </div>
       )}

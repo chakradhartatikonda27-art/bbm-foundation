@@ -280,162 +280,191 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
         </div>
       </section>
 
-      {/* 3. HOW YOU CAN HELP ORPHANED & VULNERABLE CHILDREN (Enhanced with Photo Cards for all 3 cards) */}
-      <section className="py-20 sm:py-28 bg-white" aria-labelledby="help-children-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 id="help-children-heading" className="text-3xl sm:text-4xl font-display font-bold text-[#114227]">
-              How You Can Help Orphaned and Vulnerable Children
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-medium">
-              Join hands to make a direct, tangible difference in a child's life today.
-            </p>
-          </div>
+      {/* 3. HOW YOU CAN HELP ORPHANED & VULNERABLE CHILDREN (100% Dynamic CMS) */}
+      {(() => {
+        const helpData = siteContent?.how_you_can_help;
+        const sectionTitle = helpData?.sectionTitle || "How You Can Help Orphaned and Vulnerable Children";
+        const sectionSubtitle = helpData?.sectionSubtitle || "Join hands to make a direct, tangible difference in a child's life today.";
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Card 1: Large Featured Donate Card */}
-            <div className="lg:col-span-7 bg-gradient-to-br from-blue-50/50 via-white to-slate-50/50 rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
-              <div className="space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center shadow-sm">
-                    <Heart className="w-6 h-6 fill-current" />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
-                    Direct Impact
-                  </span>
-                </div>
+        const card1Title = helpData?.card1Title || "Donate to BBM Foundation Today";
+        const card1Desc = helpData?.card1Desc || "Be the one to bring a significant, lasting impact to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.";
+        const card1PhotoUrl = helpData?.card1PhotoUrl || "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1000";
+        const card1Caption = helpData?.card1Caption || "❤️ Supporting 500+ vulnerable & orphaned children this year";
+        const card1Badge1 = helpData?.card1Badge1 || "100% Direct Field Aid";
+        const card1Badge2 = helpData?.card1Badge2 || "Verified Transparent NGO";
+        const card1Notice = helpData?.card1Notice || "Tax deductible under applicable guidelines";
+        const card1ButtonText = helpData?.card1ButtonText || "I want to donate";
 
-                <div className="relative rounded-2xl overflow-hidden h-48 sm:h-56 border border-slate-100 shadow-inner group">
-                  <img
-                    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1000"
-                    alt="Children supported by BBM Foundation"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4">
-                    <p className="text-white text-xs font-semibold">
-                      ❤️ Supporting 500+ vulnerable & orphaned children this year
-                    </p>
-                  </div>
-                </div>
+        const card2Title = helpData?.card2Title || "Stand with Children in Prayer & Support";
+        const card2Desc = helpData?.card2Desc || "Unite in purpose. Transform the world. Join our dedicated support & prayer network.";
+        const card2Tag = helpData?.card2Tag || "Prayer & Hope Network";
+        const card2PhotoUrl = helpData?.card2PhotoUrl || "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600";
+        const card2LinkText = helpData?.card2LinkText || "Join Support Network →";
 
-                <div>
-                  <h3 className="text-2xl font-bold font-display text-slate-900 leading-tight">
-                    Donate to BBM Foundation Today
-                  </h3>
-                  <p className="text-slate-600 text-sm mt-2 leading-relaxed">
-                    Be the one to bring a <span className="text-blue-600 font-bold">significant, lasting impact</span> to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.
-                  </p>
-                </div>
+        const card3Title = helpData?.card3Title || "Help Children Locally";
+        const card3Desc = helpData?.card3Desc || "Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.";
+        const card3Tag = helpData?.card3Tag || "Local Leadership";
+        const card3PhotoUrl = helpData?.card3PhotoUrl || "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600";
+        const card3LinkText = helpData?.card3LinkText || "Become a Local Leader →";
 
-                <div className="grid grid-cols-2 gap-3 pt-1">
-                  <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span>100% Direct Field Aid</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
-                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                    <span>Verified Transparent NGO</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 mt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <span className="text-xs text-slate-500 font-medium text-center sm:text-left">
-                  Tax deductible under applicable guidelines
-                </span>
-                <button
-                  type="button"
-                  onClick={() => openDonate("General Donation")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center py-3.5 px-8 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-sm shadow-md transition-all active:scale-95 flex-shrink-0"
-                >
-                  I want to donate
-                </button>
-              </div>
-            </div>
-
-            {/* Card 2 & Card 3 Column */}
-            <div className="lg:col-span-5 flex flex-col gap-8 justify-between">
+        return (
+          <section className="py-20 sm:py-28 bg-white" aria-labelledby="help-children-heading">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
-              {/* Card 2: Stand with Orphans in Prayer (Enhanced with photo) */}
-              <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4 hover:shadow-md transition-all flex-1 flex flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center">
-                      <Heart className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                      Prayer & Hope Network
-                    </span>
-                  </div>
-
-                  <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
-                    <img
-                      src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600"
-                      alt="Hands together supporting each other"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <h3 className="text-lg font-bold font-display text-slate-900">
-                    Stand with Children in Prayer & Support
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    <strong className="text-slate-800">Unite in purpose. Transform the world.</strong> Join our dedicated support & prayer network.
-                  </p>
-                </div>
-
-                <Link
-                  href="/get-involved"
-                  className="inline-flex items-center text-xs font-bold text-[#2563eb] hover:underline pt-2"
-                >
-                  Join Support Network →
-                </Link>
+              <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 id="help-children-heading" className="text-3xl sm:text-4xl font-display font-bold text-[#114227]">
+                  {sectionTitle}
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 font-medium">
+                  {sectionSubtitle}
+                </p>
               </div>
 
-              {/* Card 3: Help Children Locally (Enhanced with photo) */}
-              <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4 hover:shadow-md transition-all flex-1 flex flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center">
-                      <Megaphone className="w-5 h-5" />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                {/* Card 1: Large Featured Donate Card */}
+                <div className="lg:col-span-7 bg-gradient-to-br from-blue-50/50 via-white to-slate-50/50 rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center shadow-sm">
+                        <Heart className="w-6 h-6 fill-current" />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
+                        Direct Impact
+                      </span>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">
-                      Local Leadership
+
+                    <div className="relative rounded-2xl overflow-hidden h-48 sm:h-56 border border-slate-100 shadow-inner group">
+                      <img
+                        src={card1PhotoUrl}
+                        alt={card1Title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {card1Caption && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4">
+                          <p className="text-white text-xs font-semibold">
+                            {card1Caption}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold font-display text-slate-900 leading-tight">
+                        {card1Title}
+                      </h3>
+                      <p className="text-slate-600 text-sm mt-2 leading-relaxed">
+                        {card1Desc}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 pt-1">
+                      <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <span>{card1Badge1}</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                        <span>{card1Badge2}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 mt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span className="text-xs text-slate-500 font-medium text-center sm:text-left">
+                      {card1Notice}
                     </span>
+                    <button
+                      type="button"
+                      onClick={() => openDonate("General Donation")}
+                      className="w-full sm:w-auto inline-flex items-center justify-center py-3.5 px-8 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-extrabold text-sm shadow-md transition-all active:scale-95 flex-shrink-0"
+                    >
+                      {card1ButtonText}
+                    </button>
                   </div>
-
-                  <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
-                    <img
-                      src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600"
-                      alt="Local community leaders collaborating"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <h3 className="text-lg font-bold font-display text-slate-900">
-                    Help Children Locally
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.
-                  </p>
                 </div>
 
-                <Link
-                  href="/get-involved"
-                  className="inline-flex items-center text-xs font-bold text-[#2563eb] hover:underline pt-2"
-                >
-                  Become a Local Leader →
-                </Link>
-              </div>
+                {/* Card 2 & Card 3 Column */}
+                <div className="lg:col-span-5 flex flex-col gap-8 justify-between">
+                  
+                  {/* Card 2: Stand with Orphans in Prayer */}
+                  <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4 hover:shadow-md transition-all flex-1 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center">
+                          <Heart className="w-5 h-5" />
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                          {card2Tag}
+                        </span>
+                      </div>
 
+                      <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
+                        <img
+                          src={card2PhotoUrl}
+                          alt={card2Title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+
+                      <h3 className="text-lg font-bold font-display text-slate-900">
+                        {card2Title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {card2Desc}
+                      </p>
+                    </div>
+
+                    <Link
+                      href="/get-involved"
+                      className="inline-flex items-center text-xs font-bold text-[#2563eb] hover:underline pt-2"
+                    >
+                      {card2LinkText}
+                    </Link>
+                  </div>
+
+                  {/* Card 3: Help Children Locally */}
+                  <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4 hover:shadow-md transition-all flex-1 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center">
+                          <Megaphone className="w-5 h-5" />
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">
+                          {card3Tag}
+                        </span>
+                      </div>
+
+                      <div className="relative rounded-2xl overflow-hidden h-32 border border-slate-100 shadow-inner my-2">
+                        <img
+                          src={card3PhotoUrl}
+                          alt={card3Title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+
+                      <h3 className="text-lg font-bold font-display text-slate-900">
+                        {card3Title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {card3Desc}
+                      </p>
+                    </div>
+
+                    <Link
+                      href="/get-involved"
+                      className="inline-flex items-center text-xs font-bold text-[#2563eb] hover:underline pt-2"
+                    >
+                      {card3LinkText}
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
             </div>
-
-          </div>
-
-        </div>
-      </section>
+          </section>
+        );
+      })()}
 
       {/* 3.5 INSTANT PAYMENT SCANNER SECTION (UPI & QR Code) */}
       <PaymentScannerSection scannerData={siteContent?.payment_scanner} />
