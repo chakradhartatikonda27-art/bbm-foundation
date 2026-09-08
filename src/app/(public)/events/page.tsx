@@ -5,7 +5,15 @@ import prisma from "@/lib/db";
 
 export const metadata = {
   title: "Events & Gatherings — BBM Foundation",
-  description: "Join BBM Foundation global community gatherings, regional workshops, and leadership summits.",
+  description: "Join BBM Foundation global community gatherings, regional workshops, speaker sessions, and leadership summits.",
+  alternates: {
+    canonical: "/events",
+  },
+  openGraph: {
+    title: "Events & Gatherings — BBM Foundation",
+    description: "Join BBM Foundation global community gatherings, regional workshops, speaker sessions, and leadership summits.",
+    url: "https://bbmfoundation.online/events",
+  },
 };
 
 async function getSiteContent() {

@@ -5,8 +5,16 @@ import prisma from "@/lib/db";
 import { getSiteContent } from "@/lib/siteContent";
 
 export const metadata = {
-  title: "Transparency & Governance",
-  description: "Check compliance documents, annual audit reports, registration records, and foundation policy codes.",
+  title: "Transparency & Governance — BBM Foundation",
+  description: "Check compliance documents, annual audit reports, registration records, 80G/FCRA statuses, and foundation governance policies.",
+  alternates: {
+    canonical: "/transparency",
+  },
+  openGraph: {
+    title: "Transparency & Governance — BBM Foundation",
+    description: "Check compliance documents, annual audit reports, registration records, 80G/FCRA statuses, and foundation governance policies.",
+    url: "https://bbmfoundation.online/transparency",
+  },
 };
 
 export default async function TransparencyPage() {

@@ -5,6 +5,19 @@ import prisma from "@/lib/db";
 import AboutImageSlider from "@/components/AboutImageSlider";
 import { getSiteContent } from "@/lib/siteContent";
 
+export const metadata = {
+  title: "About Us — BBM FOUNDATION",
+  description: "Learn about BBM Foundation's history, mission, vision, leadership under Dr. B. Giribabu, and core values dedicated to child care, education, and family strengthening.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us — BBM FOUNDATION",
+    description: "Learn about BBM Foundation's history, mission, vision, leadership, and core values.",
+    url: "https://bbmfoundation.online/about",
+  },
+};
+
 export default async function AboutPage() {
   const team = await prisma.teamMember.findMany({
     orderBy: { order: "asc" },

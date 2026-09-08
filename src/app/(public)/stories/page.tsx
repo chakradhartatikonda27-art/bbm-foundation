@@ -4,8 +4,16 @@ import prisma from "@/lib/db";
 import StoriesClient from "@/components/StoriesClient";
 
 export const metadata = {
-  title: "Stories — BBM Foundation",
-  description: "Read inspiring stories of change, community resilience, and child empowerment from across our global and local initiatives.",
+  title: "Stories of Impact — BBM Foundation",
+  description: "Read inspiring stories of change, family reunification, community resilience, and child empowerment from BBM Foundation initiatives.",
+  alternates: {
+    canonical: "/stories",
+  },
+  openGraph: {
+    title: "Stories of Impact — BBM Foundation",
+    description: "Read inspiring stories of change, family reunification, community resilience, and child empowerment from BBM Foundation initiatives.",
+    url: "https://bbmfoundation.online/stories",
+  },
 };
 
 export default async function StoriesPage() {

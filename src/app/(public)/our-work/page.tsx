@@ -5,8 +5,16 @@ import WorkClient from "./WorkClient";
 import { getSiteContent } from "@/lib/siteContent";
 
 export const metadata = {
-  title: "Our Work",
-  description: "Explore the programmatic sectors and community development initiatives coordinated by BBM Foundation.",
+  title: "Our Work & Initiatives — BBM Foundation",
+  description: "Explore the programmatic sectors, child protection frameworks, and community development initiatives coordinated by BBM Foundation.",
+  alternates: {
+    canonical: "/our-work",
+  },
+  openGraph: {
+    title: "Our Work & Initiatives — BBM Foundation",
+    description: "Explore the programmatic sectors, child protection frameworks, and community development initiatives coordinated by BBM Foundation.",
+    url: "https://bbmfoundation.online/our-work",
+  },
 };
 
 export default async function OurWorkPage() {

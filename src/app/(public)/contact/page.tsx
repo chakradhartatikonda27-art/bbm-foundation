@@ -5,7 +5,15 @@ import { getSiteContent } from "@/lib/siteContent";
 
 export const metadata = {
   title: "Contact Us — BBM Foundation",
-  description: "Get in touch with BBM Foundation Secretariat, leadership team, and regional office locations.",
+  description: "Get in touch with BBM Foundation Secretariat, leadership under Dr. B. Giribabu, and regional office locations in Narsipatnam & Hyderabad.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us — BBM Foundation",
+    description: "Get in touch with BBM Foundation Secretariat, leadership under Dr. B. Giribabu, and regional office locations in Narsipatnam & Hyderabad.",
+    url: "https://bbmfoundation.online/contact",
+  },
 };
 
 export default async function ContactPage() {

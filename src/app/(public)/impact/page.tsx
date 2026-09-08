@@ -4,8 +4,16 @@ import prisma from "@/lib/db";
 import StoriesClient from "@/components/StoriesClient";
 
 export const metadata = {
-  title: "Impact & Stories — BBM Foundation",
-  description: "Read stories of change, community resilience, and child empowerment from across our global and local initiatives.",
+  title: "Impact & Social Metrics — BBM Foundation",
+  description: "Explore empirical social impact metrics, transformed lives, family reunifications, and community developments by BBM Foundation.",
+  alternates: {
+    canonical: "/impact",
+  },
+  openGraph: {
+    title: "Impact & Social Metrics — BBM Foundation",
+    description: "Explore empirical social impact metrics, transformed lives, family reunifications, and community developments by BBM Foundation.",
+    url: "https://bbmfoundation.online/impact",
+  },
 };
 
 export default async function ImpactPage() {
