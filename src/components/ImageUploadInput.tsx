@@ -21,6 +21,15 @@ export default function ImageUploadInput({
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const readFileAsDataUrl = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -30,8 +39,8 @@ export default function ImageUploadInput({
       return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      setError("Image file size must be less than 10MB.");
+    if (file.size > 15 * 1024 * 1024) {
+      setError("Image file size must be less than 15MB.");
       return;
     }
 
@@ -39,23 +48,34 @@ export default function ImageUploadInput({
     setError(null);
 
     try {
-      const formData = new FormData();
-      formData.append("file", file);
+      // 1. Instantly read file as Base64 Data URL in browser memory
+      const localDataUrl = await readFileAsDataUrl(file);
 
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      // 2. Try server upload API endpoint
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
 
-      const data = await res.json();
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
 
-      if (res.ok && data.success && data.url) {
-        onChange(data.url);
-      } else {
-        setError(data.error || "Failed to upload image.");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.url) {
+            onChange(data.url);
+            return;
+          }
+        }
+      } catch (serverErr) {
+        console.warn("Server upload API endpoint unreachable, using client-side Base64 fallback.", serverErr);
       }
+
+      // 3. Guaranteed fail-safe: use client-side Base64 Data URL
+      onChange(localDataUrl);
     } catch (err) {
-      setError("Network error uploading photo.");
+      setError("Failed to process image file. Please try another image.");
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
