@@ -238,30 +238,96 @@ export default function SiteContentClient({ initialContent }: SiteContentClientP
     copyright: initialContent?.footer_info?.copyright || "© BBM FOUNDATION. All Rights Reserved.",
   });
 
+  const compressBase64String = (base64Str: string, maxDim = 800): Promise<string> => {
+    if (!base64Str || typeof base64Str !== "string" || !base64Str.startsWith("data:image")) {
+      return Promise.resolve(base64Str);
+    }
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          }
+        } else {
+          if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve(base64Str);
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", 0.8));
+      };
+      img.onerror = () => resolve(base64Str);
+      img.src = base64Str;
+    });
+  };
+
+  const sanitizePayloadImages = async (obj: any): Promise<any> => {
+    if (!obj || typeof obj !== "object") return obj;
+    if (Array.isArray(obj)) {
+      return Promise.all(obj.map((item) => sanitizePayloadImages(item)));
+    }
+    const copy: any = { ...obj };
+    for (const key of Object.keys(copy)) {
+      if (typeof copy[key] === "string" && copy[key].startsWith("data:image")) {
+        copy[key] = await compressBase64String(copy[key]);
+      } else if (typeof copy[key] === "object" && copy[key] !== null) {
+        copy[key] = await sanitizePayloadImages(copy[key]);
+      }
+    }
+    return copy;
+  };
+
   const handleSave = async (key: string, payload: any) => {
     setIsSaving(true);
     setSuccessMessage(null);
 
     try {
+      // Clean and compress any embedded Base64 image payloads to keep request under 200KB
+      const cleanPayload = await sanitizePayloadImages(payload);
+
       const res = await fetch("/api/admin/site-content", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key, payload }),
+        body: JSON.stringify({ key, payload: cleanPayload }),
       });
-      const data = await res.json();
+
       if (res.status === 401) {
         alert("Session expired. Please log in again.");
         window.location.href = "/admin/login";
         return;
       }
+
+      const responseText = await res.text();
+      let data: any = {};
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseErr) {
+        data = { error: `Server payload error (${res.status}). Content size may be too large.` };
+      }
+
       if (res.ok && data.success) {
         setSuccessMessage(`Successfully updated ${key.replace("_", " ").toUpperCase()} settings!`);
         setTimeout(() => setSuccessMessage(null), 3500);
       } else {
         alert(data.error || "Failed to update site content");
       }
-    } catch {
-      alert("Network error occurred while saving settings.");
+    } catch (err: any) {
+      alert("Network error occurred while saving settings. Please check network connection.");
     } finally {
       setIsSaving(false);
     }
