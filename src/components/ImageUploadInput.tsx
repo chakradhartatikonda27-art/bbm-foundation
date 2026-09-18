@@ -21,10 +21,45 @@ export default function ImageUploadInput({
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const readFileAsDataUrl = (file: File): Promise<string> => {
+  const compressAndConvertToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let width = img.width;
+          let height = img.height;
+          const maxDimension = 1200;
+
+          if (width > height) {
+            if (width > maxDimension) {
+              height = Math.round((height * maxDimension) / width);
+              width = maxDimension;
+            }
+          } else {
+            if (height > maxDimension) {
+              width = Math.round((width * maxDimension) / height);
+              height = maxDimension;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            resolve(event.target?.result as string);
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+          resolve(dataUrl);
+        };
+        img.onerror = () => resolve(event.target?.result as string);
+        img.src = event.target?.result as string;
+      };
       reader.onerror = (err) => reject(err);
       reader.readAsDataURL(file);
     });
@@ -39,19 +74,17 @@ export default function ImageUploadInput({
       return;
     }
 
-    if (file.size > 15 * 1024 * 1024) {
-      setError("Image file size must be less than 15MB.");
-      return;
-    }
-
     setIsUploading(true);
     setError(null);
 
     try {
-      // 1. Instantly read file as Base64 Data URL in browser memory
-      const localDataUrl = await readFileAsDataUrl(file);
+      // 1. Instantly compress and convert photo in browser to lightweight Base64
+      const compressedDataUrl = await compressAndConvertToBase64(file);
 
-      // 2. Try server upload API endpoint
+      // 2. Set the compressed image immediately so preview and form value update
+      onChange(compressedDataUrl);
+
+      // 3. Optional background server upload API ping
       try {
         const formData = new FormData();
         formData.append("file", file);
@@ -65,17 +98,13 @@ export default function ImageUploadInput({
           const data = await res.json();
           if (data.success && data.url) {
             onChange(data.url);
-            return;
           }
         }
       } catch (serverErr) {
-        console.warn("Server upload API endpoint unreachable, using client-side Base64 fallback.", serverErr);
+        console.warn("Background server upload skipped, using client-compressed Base64.", serverErr);
       }
-
-      // 3. Guaranteed fail-safe: use client-side Base64 Data URL
-      onChange(localDataUrl);
     } catch (err) {
-      setError("Failed to process image file. Please try another image.");
+      setError("Failed to read image file. Please try another image.");
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
