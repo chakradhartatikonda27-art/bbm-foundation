@@ -75,7 +75,7 @@ export default function EventsClient({ siteContent }: EventsClientProps) {
       <section 
         className="relative min-h-[35vh] sm:min-h-[40vh] -mt-20 pt-32 pb-16 flex items-center justify-center text-white bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920')"
+          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg')"
         }}
         aria-label="Events Hero Header"
       >
@@ -229,8 +229,8 @@ export default function EventsClient({ siteContent }: EventsClientProps) {
 
                   <div className="relative rounded-xl overflow-hidden h-44 shadow-md border border-white/20">
                     <img
-                      src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600"
-                      alt="Gathering poster mountain silhouette"
+                      src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Koya_Tribal_Habitat.jpg"
+                      alt="Gathering poster community tribal habitat"
                       className="w-full h-full object-cover"
                     />
                   </div>

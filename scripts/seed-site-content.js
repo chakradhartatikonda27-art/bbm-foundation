@@ -25,12 +25,12 @@ const siteContentData = [
       badge: "Instant & Direct Impact",
       title: "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS",
       highlight: "VITAL",
-      subtitle: "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.",
+      subtitle: "Partnering with tribal, rural, and underprivileged communities across Andhra Pradesh and South India so millions of children grow up in safe families with quality education.",
       primaryCtaText: "Donate Now",
       primaryCtaLink: "/donate",
       secondaryCtaText: "Explore Our Work",
       secondaryCtaLink: "/our-work",
-      backgroundImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920"
+      backgroundImage: "https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg"
     })
   },
   {
@@ -41,24 +41,24 @@ const siteContentData = [
       cards: [
         {
           title: "Helping Orphans Through Action",
-          bullets: "Family-strengthening programs, Learning communities, Hope groups, Educational initiatives",
+          bullets: "Family-strengthening programs, Tribal child welfare, Hope groups, Educational initiatives",
           buttonText: "I want to act right now",
           link: "/get-involved",
-          imageUrl: "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800"
+          imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tribal_child.jpg"
         },
         {
           title: "Making A Measurable Difference",
-          bullets: "How we study data & predict our impact, How we gather statistics, How we measure our success",
+          bullets: "Field survey in tribal habitats, Community statistics, Healthcare & foster metrics",
           buttonText: "I want to learn more",
           link: "/impact",
-          imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800"
+          imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/09/Members_of_Koi_community.jpg"
         },
         {
           title: "Resources To Create Change",
-          bullets: "The BBM Roadmap, Parenting & Care Tips, Advocacy Resources, Our vast library of videos & guides",
+          bullets: "The BBM Roadmap, Parenting in rural belts, Advocacy resources, Child protection guides",
           buttonText: "I want to read more",
           link: "/our-work",
-          imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800"
+          imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg"
         }
       ]
     })
@@ -69,22 +69,22 @@ const siteContentData = [
       sectionTitle: "How You Can Help Orphaned and Vulnerable Children",
       sectionSubtitle: "Join hands to make a direct, tangible difference in a child's life today.",
       card1Title: "Donate to BBM Foundation Today",
-      card1Desc: "Be the one to bring a significant, lasting impact to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.",
-      card1PhotoUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1000",
-      card1Caption: "❤️ Supporting 500+ vulnerable & orphaned children this year",
+      card1Desc: "Be the one to bring a significant, lasting impact to the life of a tribal and rural child. Every contribution directly funds essential education kits, health care, and family preservation in Andhra Pradesh.",
+      card1PhotoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/63/Elementary_School.jpg",
+      card1Caption: "❤️ Supporting 500+ vulnerable & tribal children in Andhra Pradesh this year",
       card1Badge1: "100% Direct Field Aid",
       card1Badge2: "Verified Transparent NGO",
       card1Notice: "Tax deductible under applicable guidelines",
       card1ButtonText: "I want to donate",
-      card2Title: "Stand with Children in Prayer & Support",
-      card2Desc: "Unite in purpose. Transform the world. Join our dedicated support & prayer network.",
+      card2Title: "Stand with Tribal Children in Prayer & Support",
+      card2Desc: "Unite in purpose. Transform rural and tribal communities across South India. Join our dedicated support & prayer network.",
       card2Tag: "Prayer & Hope Network",
-      card2PhotoUrl: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600",
+      card2PhotoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/67/Lambadi_Woman.jpg",
       card2LinkText: "Join Support Network →",
-      card3Title: "Help Children Locally",
-      card3Desc: "Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.",
+      card3Title: "Help Children in Andhra Pradesh Locally",
+      card3Desc: "Join a vibrant community of local tribal elders, youth mentors, families, and advocates working together in Andhra Pradesh.",
       card3Tag: "Local Leadership",
-      card3PhotoUrl: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600",
+      card3PhotoUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Chenchu_tribe.jpg",
       card3LinkText: "Become a Local Leader →"
     })
   },
@@ -141,28 +141,28 @@ const siteContentData = [
     key: "mission_vision",
     content: JSON.stringify({
       badge: "Our Mission & Vision",
-      heading: "Building Stronger Families & Empowering Communities",
-      paragraph1: "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access.",
+      heading: "Building Stronger Families & Empowering Tribal & Rural Communities",
+      paragraph1: "BBM Foundation is committed to creating sustainable social change through orphan care, tribal welfare, youth mentorship, and quality education access across Andhra Pradesh.",
       paragraph2: "We believe that every child deserves a loving family, quality education, and the opportunity to build a dignified future.",
-      imageUrl: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200",
-      pillar1Title: "Family Strengthening",
-      pillar1Desc: "Preventing child abandonment through family preservation programs.",
-      pillar2Title: "Education & Skills",
-      pillar2Desc: "Providing quality learning materials and youth vocational training.",
-      pillar3Title: "Child Protection",
-      pillar3Desc: "Advocating for safe foster care and family-based solutions.",
-      pillar4Title: "Community Leadership",
-      pillar4Desc: "Equipping local leaders and churches to support vulnerable children."
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/77/Poverty_in_India.jpg",
+      pillar1Title: "Tribal Child & Family Care",
+      pillar1Desc: "Preventing child abandonment through family preservation and kinship support.",
+      pillar2Title: "Prerna Education & Kits",
+      pillar2Desc: "Providing quality learning materials, notebooks, and academic scholarships.",
+      pillar3Title: "Suraksha Protection",
+      pillar3Desc: "Child protection, girl safety workshops, and safe shelter access.",
+      pillar4Title: "Swashakti Youth Leadership",
+      pillar4Desc: "Equipping tribal and rural youth with vocational training and civic mentorship."
     })
   },
   {
     key: "callout",
     content: JSON.stringify({
       title: "Join Hands With BBM Foundation Today",
-      subtitle: "Together, we can ensure every child grows up in a safe, loving family environment with equal opportunities to thrive.",
+      subtitle: "Together, we can ensure every tribal and rural child in South India grows up in a safe, loving family environment with equal opportunities to thrive.",
       ctaText: "Get Involved Now",
       ctaLink: "/get-involved",
-      bgImage: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600"
+      bgImage: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Koya_Tribal_Habitat.jpg"
     })
   },
   {

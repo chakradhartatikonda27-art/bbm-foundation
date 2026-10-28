@@ -52,7 +52,7 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
   const heroTitle = heroData?.title || "YOU CAN PLAY A VITAL ROLE IN ATTAINING A WORLD WITHOUT ORPHANS";
   const heroHighlight = heroData?.highlight || "VITAL";
   const heroSubtitle = heroData?.subtitle || "Everything we do together multiplies, so with your participation, millions of children can grow up in strong families and know their identity with a loving future.";
-  const heroBgImage = heroData?.backgroundImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920";
+  const heroBgImage = heroData?.backgroundImage || "https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg";
   const heroPrimaryCtaText = heroData?.primaryCtaText || "I Want To Support Now";
   const heroPrimaryCtaLink = heroData?.primaryCtaLink || "/donate";
   const heroSecondaryCtaText = heroData?.secondaryCtaText || "Explore Services";
@@ -66,47 +66,47 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
 
   const missionData = siteContent?.mission_vision;
   const missionBadge = missionData?.badge || "Our Mission & Vision";
-  const missionHeading = missionData?.heading || "Building Stronger Families & Empowering Communities";
-  const missionParagraph1 = missionData?.paragraph1 || "BBM Foundation is committed to creating sustainable social change through orphan care, family strengthening, youth mentorship, and education access.";
+  const missionHeading = missionData?.heading || "Building Stronger Families & Empowering Tribal & Rural Communities";
+  const missionParagraph1 = missionData?.paragraph1 || "BBM Foundation is committed to creating sustainable social change through orphan care, tribal welfare, youth mentorship, and quality education access across Andhra Pradesh.";
   const missionParagraph2 = missionData?.paragraph2 || "We believe that every child deserves a loving family, quality education, and the opportunity to build a dignified future.";
-  const missionImageUrl = missionData?.imageUrl || "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200";
+  const missionImageUrl = missionData?.imageUrl || "https://upload.wikimedia.org/wikipedia/commons/7/77/Poverty_in_India.jpg";
 
   const calloutData = siteContent?.callout;
-  const calloutQuote = calloutData?.quote || "When we empower a single child with love and education, we transform generations. BBM Foundation stands as a bridge of hope for every family.";
+  const calloutQuote = calloutData?.quote || "When we empower a single tribal or rural child with education and protection, we transform entire generations. BBM Foundation stands as a bridge of hope for every family.";
   const calloutAuthor = calloutData?.authorName || "Dr. B. Giribabu";
   const calloutRole = calloutData?.authorRole || "President & Managing Trustee";
-  const calloutBgImage = calloutData?.bgImage || "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600";
+  const calloutBgImage = calloutData?.bgImage || "https://upload.wikimedia.org/wikipedia/commons/4/4e/Koya_Tribal_Habitat.jpg";
 
   const galleryImages = [
     {
-      title: "Education & School Kits Support",
-      category: "Prerna Initiative",
-      img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800",
+      title: "Rural Primary School Education Drive",
+      category: "Nandikotkur, Andhra Pradesh",
+      img: "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg",
     },
     {
-      title: "Refresh Camps & Outdoor Recreation",
-      category: "Child Wellbeing",
-      img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800",
+      title: "Tribal Child Protection & Care Outreach",
+      category: "Nallamala Tribal Belt, AP",
+      img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tribal_child.jpg",
     },
     {
-      title: "Family Reunification & Foster Care",
-      category: "Family Preservation",
-      img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800",
+      title: "Liberation from Child Labor & School Re-entry",
+      category: "Ramasamudram, Andhra Pradesh",
+      img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg",
     },
     {
-      title: "Girl Child Safety Workshops",
-      category: "Suraksha Program",
-      img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
+      title: "Tribal Women Empowerment & Self-Help",
+      category: "Lambadi Community, South India",
+      img: "https://upload.wikimedia.org/wikipedia/commons/6/67/Lambadi_Woman.jpg",
     },
     {
-      title: "Youth Leadership Mentorship",
-      category: "Swashakti Program",
-      img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=800",
+      title: "Indigenous Community Healthcare & Welfare",
+      category: "Koya Tribal Habitations, AP",
+      img: "https://upload.wikimedia.org/wikipedia/commons/0/09/Members_of_Koi_community.jpg",
     },
     {
-      title: "Clean School Infrastructure",
-      category: "Ahlada Initiative",
-      img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800",
+      title: "Adopted School Renovation & Learning Kits",
+      category: "Chittoor, Andhra Pradesh",
+      img: "https://upload.wikimedia.org/wikipedia/commons/6/63/Elementary_School.jpg",
     },
   ];
 
@@ -190,24 +190,24 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
               const defaultCards = [
                 {
                   title: "Helping Orphans Through Action",
-                  bullets: ["Family-strengthening programs", "Learning communities", "Hope groups", "Educational initiatives"],
+                  bullets: ["Family-strengthening programs", "Tribal child welfare", "Hope groups", "Educational initiatives"],
                   buttonText: "I want to act right now",
                   link: "/get-involved",
-                  imageUrl: "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800",
+                  imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tribal_child.jpg",
                 },
                 {
                   title: "Making A Measurable Difference",
-                  bullets: ["How we study data & predict our impact", "How we gather statistics", "How we measure our success"],
+                  bullets: ["Field survey in tribal habitats", "Community statistics", "Healthcare & foster metrics"],
                   buttonText: "I want to learn more",
                   link: "/impact",
-                  imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800",
+                  imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/09/Members_of_Koi_community.jpg",
                 },
                 {
                   title: "Resources To Create Change",
-                  bullets: ["The BBM Roadmap", "Parenting & Care Tips", "Advocacy Resources", "Our vast library of videos & guides"],
+                  bullets: ["The BBM Roadmap", "Parenting in rural belts", "Advocacy resources", "Child protection guides"],
                   buttonText: "I want to read more",
                   link: "/our-work",
-                  imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
+                  imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg",
                 },
               ];
 
@@ -221,6 +221,9 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
                 url.includes("photo-1603988363607-e1e4a66962c6") ||
                 url.includes("photo-1596464716127-f2a82984de30") ||
                 url.includes("photo-1509099836639-18ba1795216d") ||
+                url.includes("photo-1588072432836-e10032774350") ||
+                url.includes("photo-1524178232363-1fb2b075b655") ||
+                url.includes("photo-1544717305-2782549b5136") ||
                 url.includes("photo-1617634667039-8e4cb277ab46");
 
               const cardList = rawCards && rawCards.length > 0
@@ -287,24 +290,30 @@ export default function HomePageClient({ programs, stories, metrics, siteContent
         const sectionSubtitle = helpData?.sectionSubtitle || "Join hands to make a direct, tangible difference in a child's life today.";
 
         const card1Title = helpData?.card1Title || "Donate to BBM Foundation Today";
-        const card1Desc = helpData?.card1Desc || "Be the one to bring a significant, lasting impact to the life of a child. Every contribution directly funds essential education kits, health care, and family preservation.";
-        const card1PhotoUrl = helpData?.card1PhotoUrl || "https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1000";
-        const card1Caption = helpData?.card1Caption || "❤️ Supporting 500+ vulnerable & orphaned children this year";
+        const card1Desc = helpData?.card1Desc || "Be the one to bring a significant, lasting impact to the life of a tribal and rural child. Every contribution directly funds essential education kits, health care, and family preservation in Andhra Pradesh.";
+        const card1PhotoUrl = (helpData?.card1PhotoUrl && !helpData.card1PhotoUrl.includes("photo-1596464716127-f2a82984de30"))
+          ? helpData.card1PhotoUrl
+          : "https://upload.wikimedia.org/wikipedia/commons/6/63/Elementary_School.jpg";
+        const card1Caption = helpData?.card1Caption || "❤️ Supporting 500+ vulnerable & tribal children in Andhra Pradesh this year";
         const card1Badge1 = helpData?.card1Badge1 || "100% Direct Field Aid";
         const card1Badge2 = helpData?.card1Badge2 || "Verified Transparent NGO";
         const card1Notice = helpData?.card1Notice || "Tax deductible under applicable guidelines";
         const card1ButtonText = helpData?.card1ButtonText || "I want to donate";
 
-        const card2Title = helpData?.card2Title || "Stand with Children in Prayer & Support";
-        const card2Desc = helpData?.card2Desc || "Unite in purpose. Transform the world. Join our dedicated support & prayer network.";
+        const card2Title = helpData?.card2Title || "Stand with Tribal Children in Prayer & Support";
+        const card2Desc = helpData?.card2Desc || "Unite in purpose. Transform rural and tribal communities across South India. Join our dedicated support & prayer network.";
         const card2Tag = helpData?.card2Tag || "Prayer & Hope Network";
-        const card2PhotoUrl = helpData?.card2PhotoUrl || "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600";
+        const card2PhotoUrl = (helpData?.card2PhotoUrl && !helpData.card2PhotoUrl.includes("photo-1582213782179-e0d53f98f2ca"))
+          ? helpData.card2PhotoUrl
+          : "https://upload.wikimedia.org/wikipedia/commons/6/67/Lambadi_Woman.jpg";
         const card2LinkText = helpData?.card2LinkText || "Join Support Network →";
 
-        const card3Title = helpData?.card3Title || "Help Children Locally";
-        const card3Desc = helpData?.card3Desc || "Join a vibrant community of changemakers—leaders, churches, families, and advocates—working together.";
+        const card3Title = helpData?.card3Title || "Help Children in Andhra Pradesh Locally";
+        const card3Desc = helpData?.card3Desc || "Join a vibrant community of local tribal elders, youth mentors, families, and advocates working together in Andhra Pradesh.";
         const card3Tag = helpData?.card3Tag || "Local Leadership";
-        const card3PhotoUrl = helpData?.card3PhotoUrl || "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600";
+        const card3PhotoUrl = (helpData?.card3PhotoUrl && !helpData.card3PhotoUrl.includes("photo-1531206715517-5c0ba140b2b8"))
+          ? helpData.card3PhotoUrl
+          : "https://upload.wikimedia.org/wikipedia/commons/9/9a/Chenchu_tribe.jpg";
         const card3LinkText = helpData?.card3LinkText || "Become a Local Leader →";
 
         return (
