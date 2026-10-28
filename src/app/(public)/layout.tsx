@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { getSiteContent } from "@/lib/siteContent";
 
 export default async function PublicLayout({
@@ -27,6 +28,7 @@ export default async function PublicLayout({
       <Navbar branding={branding} />
       <main className="flex-grow flex flex-col">{children}</main>
       <Footer footerInfo={footerInfo} branding={branding} />
+      <FloatingWhatsApp />
     </div>
   );
 }
