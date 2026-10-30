@@ -36,7 +36,7 @@ export default function ELearningClient() {
       title: "Servant Leadership",
       author: "By Ruby M. Johnston",
       description: "At BBM Foundation, servant leadership is more than just a leadership style—it is one way we live out our vision of seeing every child thrive within a safe and loving family. It reflects our core values and cornerstones, guiding how we serve children, families, and one another. Servant leadership also connects directly with the BBM Roadmap, strengthening not only Living Refreshed, but also the other three foundations—Collaboration, Prevention, and Intervention—that together shape how we pursue our mission. By rooting servant leadership in our vision, values, and Roadmap, we ensure that the way we lead remains aligned with the heart of who we are and what we are called to do.",
-      imageUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/63/Elementary_School.jpg",
       duration: "4.5 Hours • 8 Modules",
       modulesCount: 8,
     },
@@ -45,7 +45,7 @@ export default function ELearningClient() {
       title: "Family Reunification & Foster Care Best Practices",
       author: "By Dr. Rachel Stevens",
       description: "Practical field frameworks for social workers, community leaders, and foster parents on building safe family transition environments.",
-      imageUrl: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=800",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg",
       duration: "2.5 Hours • 5 Modules",
       modulesCount: 5,
     },
@@ -54,7 +54,7 @@ export default function ELearningClient() {
       title: "Trauma-Informed Care & Hope Group Facilitation",
       author: "By Regional Caregiver Council",
       description: "Equipping volunteers and church leaders to lead emotional recovery groups and community support circles for vulnerable children.",
-      imageUrl: "https://images.unsplash.com/photo-1608408891486-ee21896898d9?q=80&w=800",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tribal_child.jpg",
       duration: "3.5 Hours • 7 Modules",
       modulesCount: 7,
     },
@@ -66,7 +66,7 @@ export default function ELearningClient() {
       <section 
         className="relative min-h-[32vh] sm:min-h-[38vh] -mt-20 pt-32 pb-16 flex items-center justify-center text-white bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=1920')"
+          backgroundImage: "linear-gradient(to bottom, rgba(15, 30, 20, 0.65), rgba(15, 30, 20, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg')"
         }}
         aria-label="E-learning Hero Header"
       >

@@ -104,42 +104,42 @@ const siteContentData = [
         {
           name: "Dr. B. Giribabu",
           role: "President & Managing Trustee",
-          imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400"
+          imageUrl: "/speakers/dr-b-giribabu.jpg"
         },
         {
           name: "Malla Reddy",
           role: "BBM Foundation Chairman & Trustee",
-          imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400"
+          imageUrl: "/speakers/malla-reddy.jpg"
         },
         {
           name: "Praveen Gomez",
           role: "Implementation & Field Director",
-          imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400"
+          imageUrl: "/speakers/praveen-gomez.jpg"
         },
         {
           name: "MV Prasad",
           role: "Trustee - Governance & Outreach",
-          imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400"
+          imageUrl: "/speakers/mv-prasad.jpg"
         },
         {
           name: "Karmen Friesen",
           role: "WWO Principal Coordinator",
-          imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400"
+          imageUrl: "/speakers/regional-coordinator.jpg"
         },
         {
           name: "Faby Ruesga",
           role: "Regional Ambassador, East Asia",
-          imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400"
+          imageUrl: "/speakers/regional-ambassador.jpg"
         },
         {
           name: "Dr. Rachel Stevens",
           role: "Child Protection Specialist",
-          imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400"
+          imageUrl: "/speakers/child-specialist.jpg"
         },
         {
           name: "Elena Popa",
           role: "Regional Coordinator, Child Care Camps",
-          imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400"
+          imageUrl: "/speakers/camps-coordinator.jpg"
         }
       ]
     })

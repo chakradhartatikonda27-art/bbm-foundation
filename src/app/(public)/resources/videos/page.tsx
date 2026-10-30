@@ -15,18 +15,18 @@ export default async function VideosPage() {
   });
 
   const defaultVideos = [
-    { title: "Refresh Camps Summer Highlights 2026", duration: "12:45", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600", linkUrl: "#" },
-    { title: "Servant Leadership in Child Advocacy", duration: "18:20", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600", linkUrl: "#" },
-    { title: "Community Reunification in South India", duration: "09:30", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600", linkUrl: "#" },
+    { title: "Refresh Camps Summer Highlights 2026", duration: "12:45", img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg", linkUrl: "#" },
+    { title: "Servant Leadership in Child Advocacy", duration: "18:20", img: "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg", linkUrl: "#" },
+    { title: "Community Reunification in South India", duration: "09:30", img: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Koya_Tribal_Habitat.jpg", linkUrl: "#" },
   ];
 
   const videoList = dbResources.length > 0
     ? dbResources.map((r, idx) => {
         const isUrl = r.description?.startsWith("http://") || r.description?.startsWith("https://") || r.description?.startsWith("/uploads/");
         const defaultImgs = [
-          "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600",
-          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
-          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600"
+          "https://upload.wikimedia.org/wikipedia/commons/2/29/Children_hands_up.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/b/bc/School_children_at_Nandikotkur_village_Andhra_Pradesh_India.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/4/4e/Koya_Tribal_Habitat.jpg"
         ];
         return {
           title: r.title,
